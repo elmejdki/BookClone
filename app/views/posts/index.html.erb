@@ -1,9 +1,8 @@
+<div>
+  <%= image_tag current_user.avatar, class: 'profile-image' %>
+</div>
 
 <h1> All Posts </h1>
-
-<% if user_signed_in? %>
-  <%= current_user.username %>
-<% end %>
 
 <%= simple_form_for @post do |f| %>
   <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %>
@@ -19,7 +18,6 @@
     <%= image_tag post.image %>
     </div>
   <% end %>
-
 
   <div><%= post.text %></div>
 <% end %>

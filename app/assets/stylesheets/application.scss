@@ -16,6 +16,14 @@
 
  @import "bulma";
 
- .post-image {
-   width: 300px;
- }
+.post-image {
+  width: 300px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 4px 4px 21px 2px #888888;
+  margin: 30px 10px;
+}

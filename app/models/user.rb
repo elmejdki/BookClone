@@ -6,6 +6,7 @@ class User < ApplicationRecord
   # has_many :comments
   # has_many :friendships
   # has_many :friends, through: :friendships, classname: 'User'
+  has_one_attached :avatar
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
