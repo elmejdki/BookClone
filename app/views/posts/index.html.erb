@@ -7,10 +7,20 @@
 
 <%= simple_form_for @post do |f| %>
   <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
   <%= f.button :submit, 'Post' %>
 <% end %>
 
 <% @posts.each do |post| %>
   <p><%= post.user.username %> said:</p>
+  <% if post.image.attached? %>
+    <div class="post-image">
+    <%= image_tag post.image %>
+    </div>
+  <% end %>
+
+
   <div><%= post.text %></div>
 <% end %>
+
