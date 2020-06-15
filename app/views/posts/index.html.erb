@@ -1,0 +1,16 @@
+
+<h1> All Posts </h1>
+
+<% if user_signed_in? %>
+  <%= current_user.username %>
+<% end %>
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %>
+  <%= f.button :submit, 'Post' %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <p><%= post.user.username %> said:</p>
+  <div><%= post.text %></div>
+<% end %>
