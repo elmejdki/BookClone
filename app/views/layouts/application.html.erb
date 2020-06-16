@@ -25,25 +25,23 @@
       <% end %>
 
       <nav class="nav-bar">
-        <a class="logo-container" href="/">
-          <span class="nav-logo">
-            <i class="fab fa-bimobject"></i>
-          </span>
-          <span class="logo-text">
-            BookClone
-          </span>
-          <span class="link-text" href="/">
-            Timeline
-          </span>
-          <span class="link-text" href="/">
-            Friends
-          </span>
-          <span class="link-text" href="/">
-            Messages
-          </span>
-        </a>
-        <div>
-          <span>Search bar</span>
+        <div class="nav-bar-content">
+          <a class="logo-container" href="/">
+            <span class="nav-logo">
+              <i class="fab fa-bimobject"></i>
+            </span>
+            <span class="logo-text">
+              BookClone
+            </span>
+          </a>
+          <!-- FIX: these links need to be changed -->
+          <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
+          <%= link_to 'Friends', root_path, class: 'nav-bar-item' %>
+          <%= link_to 'Messages', root_path, class: 'nav-bar-item' %>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="input" placeholder="Search">
+          <i class="fa fa-search"></i>
         </div>
         <div>
           <% if user_signed_in? %>
@@ -55,7 +53,6 @@
         </div>
       </nav>
     </header>
-    
 
     <%= yield %>
   </body>
