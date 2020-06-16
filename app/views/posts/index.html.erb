@@ -1,13 +1,14 @@
-<div>
-  <%= image_tag current_user.avatar, class: 'profile-image' %>
-</div>
-
+<% if user_signed_in? %>
+  <div class="profile-container">
+    <%= image_tag current_user.avatar, class: 'profile-image' %>
+    <%= link_to 'edit', new_avatar_path, class: 'image-link' %>
+  </div>
+<% end %>
 <h1> All Posts </h1>
 
 <%= simple_form_for @post do |f| %>
-  <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+  <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %><br />
+  <%= f.file_field :image %><br />
   <%= f.button :submit, 'Post' %>
 <% end %>
 
