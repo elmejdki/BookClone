@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
   <div class="profile-container">
-    <%= image_tag current_user.avatar, class: 'profile-image' %>
+    <% if current_user.avatar.attached?  %>
+      <%= image_tag current_user.avatar, class: 'profile-image' %>
+    <% end %>
     <%= link_to 'edit', new_avatar_path, class: 'image-link' %>
   </div>
 <% end %>
@@ -19,7 +21,17 @@
     <%= image_tag post.image %>
     </div>
   <% end %>
-
+  
   <div><%= post.text %></div>
+  <% post.comments.each do |comment| %>
+    <%= comment.user.username %><br />
+    <%= comment.text %>
+  <% end %>
+  
+  <%= simple_form_for post.comments.new, url: post_comments_path(post) do |f| %>
+    <%= f.input_field :text, placeholder: 'what\'s in your mind?' %><br />
+    <%= f.button :submit, 'Comment' %>
+  <% end %>
+
 <% end %>
 
