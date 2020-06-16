@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   patch '/update_avatar', to: 'users#update_avatar', as: :update_avatar
 
   devise_for :users
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+  
 end
