@@ -14,7 +14,45 @@
  *= require_self
  */
 
- @import "bulma";
+@import "bulma";
+
+header {
+  .nav-bar {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 1px 11px -4px rgba(0, 0, 0, 0.507);
+    margin-bottom: 10px;
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+
+      .nav-logo {
+        background-color: rgba(0, 119, 255, 0.836);
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .fa-bimobject {
+          color: white;
+          font-size: 30px;
+        }
+      }
+
+      .logo-text {
+        font-weight: bold;
+        font-size: 18px;
+        color: rgba(0, 119, 255, 0.836);
+      }
+    }
+  }
+}
+
 
 .post-image {
   width: 300px;

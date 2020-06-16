@@ -6,17 +6,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
+    <header>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
 
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <nav class="nav-bar">
+        <a class="logo-container" href="/">
+          <span class="nav-logo">
+            <i class="fab fa-bimobject"></i>
+          </span>
+          <span class="logo-text">
+            BookClone
+          </span>
+        </a>
+      </nav>
+    </header>
     <% if user_signed_in? %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     <% else %>
