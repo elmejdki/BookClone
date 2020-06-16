@@ -16,6 +16,23 @@
 
 @import "bulma";
 
+$base-color: rgba(0, 119, 255, 0.836);
+
+.has-text-base {
+  color: $base-color;
+}
+
+.btn-base {
+  cursor: pointer;
+  background-color: $base-color;
+  color: white;
+
+  &:hover {
+    box-shadow: 3px 4px 10px -4px black;
+    color: white;
+  }
+}
+
 .notification:not(:last-child) {
   margin-bottom: 0px;
   display: flex;
@@ -41,7 +58,7 @@ header {
         align-items: center;
 
         .nav-logo {
-          background-color: rgba(0, 119, 255, 0.836);
+          background-color: $base-color;
           width: 30px;
           height: 30px;
           display: flex;
@@ -57,21 +74,21 @@ header {
         .logo-text {
           font-weight: bold;
           font-size: 18px;
-          color: rgba(0, 119, 255, 0.836);
+          color: $base-color;
           padding: 0 10px;
         }
       }
 
       .nav-bar-item {
         font-size: 18px;
-        color: rgba(0, 119, 255, 0.836);
+        color: $base-color;
         padding: 0 14px;
         height: 40px;
         display: flex;
         align-items: center;
 
         &:hover {
-          background-color: rgba(0, 119, 255, 0.699);
+          background-color: $base-color;
           color: rgba(248, 248, 248, 0.986);
         }
       }
@@ -104,52 +121,152 @@ header {
   }
 }
 
-
-.post-image {
-  width: 300px;
-}
-
-.profile-container {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 4px 4px 21px 2px #888888;
-  
-  .profile-image {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .image-link {
-    position: absolute;
-    bottom: 0px;
-    padding: 5px 10px;
-    left: 25px;
-    color: rgba(170, 145, 4, 0.692);
-    font-weight: bold;
-    
-    &:hover {
-      color: white;  
-    }
-  }
-}
-
 .notification {
   height: 50px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .main-container {
   display: flex;
   justify-content: center;
+  margin: 0 20px;
+
   .column-style {
     max-width: 1200px;
   }
-}
 
-.post-area {
-  width: 100%;
-  height: 200px;
-}
+  .profile-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 4px 4px 21px 2px #888888;
+    
+    .image-link {
+      position: absolute;
+      padding: 1px 10px;
+      bottom: -10px;
+      left: 0px;
+      color: $base-color;
+      font-weight: bold;
+      background-color: white;
+      width: 100%;
+      box-shadow: 0px 0px 8px -3px black;
+      
+      &:hover {
+        color: black;  
+      }
+    }
+  }
 
+  .timeline-container {
+    padding: 0 20px;
+
+    .post-form {
+      form {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+ 
+        .post-area {
+          width: 100%;
+          height: 150px;
+        }
+
+        .file {
+          position: absolute;
+          bottom: 65px;
+          left: 5px;
+
+          .file-cta {
+            padding: 10px;
+            height: 30px;
+            background-color: white;
+            border-radius: 2px;
+            
+            .file-icon {
+              margin: 0;
+              color: $base-color;
+              
+              .fa {
+                font-size: 25px;
+              }
+            }
+          }
+        }
+
+        .button {
+          margin: 5px 0;
+          align-self: flex-end  ;
+        }
+      }
+    }
+
+    .posts-container {
+
+      .poster-identifier {
+        display: flex;
+        align-items: center;
+        padding-bottom: 5px;
+
+        .image-wrapper {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+
+        .username {
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+      }
+
+      .post-text {
+        line-height: 1.8;
+        padding: 10px 0;
+        text-transform: capitalize;
+      }
+
+      .post-image {
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+
+      .reaction-container {
+        display: flex;
+        justify-content: flex-end;
+        
+        .likes {
+          display: flex;
+          align-items: baseline;
+          color: $base-color;
+        }
+        
+        .dislikes {
+          display: flex;
+          align-items: flex-end;
+          color: $base-color;
+
+          a {
+            display: flex;
+          }
+        }
+        
+        .fas {
+          color: $base-color;
+          padding: 0 5px
+          ;
+        }
+      }
+    }
+  }
+}
