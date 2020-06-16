@@ -24,6 +24,7 @@ header {
     align-items: center;
     box-shadow: 1px 1px 11px -4px rgba(0, 0, 0, 0.507);
     margin-bottom: 10px;
+    justify-content: space-between;
     
     .logo-container {
       display: flex;
@@ -48,7 +49,19 @@ header {
         font-weight: bold;
         font-size: 18px;
         color: rgba(0, 119, 255, 0.836);
+        padding-right: 10px;
       }
+
+      .link-text {
+        font-size: 18px;
+        color: rgba(0, 119, 255, 0.836);
+        padding-right: 10px;
+      }
+    }
+    div .sign-link {
+      color: black;
+      display: inline-block;
+      padding-left: 10px;
     }
   }
 }
@@ -83,4 +96,8 @@ header {
       color: white;  
     }
   }
+}
+
+.notification {
+  height: 50px;
 }
