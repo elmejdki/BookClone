@@ -1,37 +1,59 @@
-<% if user_signed_in? %>
-  <div class="profile-container">
-    <% if current_user.avatar.attached?  %>
-      <%= image_tag current_user.avatar, class: 'profile-image' %>
-    <% end %>
-    <%= link_to 'edit', new_avatar_path, class: 'image-link' %>
-  </div>
-<% end %>
-<h1> All Posts </h1>
 
-<%= simple_form_for @post do |f| %>
-  <%= f.input_field :text, label: 'name', placeholder: 'what\'s in your mind?' %><br />
-  <%= f.file_field :image %><br />
-  <%= f.button :submit, 'Post' %>
-<% end %>
 
-<% @posts.each do |post| %>
-  <p><%= post.user.username %> said:</p>
-  <% if post.image.attached? %>
-    <div class="post-image">
-    <%= image_tag post.image %>
+<main class="main-container">
+  <div class="columns column-style">
+    <div class="column is-one-quarter has-text-centered">
+      <% if user_signed_in? %>
+        <h2 class="title is-4"> Welcome <%= current_user.username%> </h2>
+        <div class="profile-container">
+          <% if current_user.avatar.attached?  %>
+            <%= image_tag current_user.avatar, class: 'profile-image' %>
+          <% end %>
+          <%= link_to 'edit', new_avatar_path, class: 'image-link' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  
-  <div><%= post.text %></div>
-  <% post.comments.each do |comment| %>
-    <%= comment.user.username %><br />
-    <%= comment.text %>
-  <% end %>
-  
-  <%= simple_form_for post.comments.new, url: post_comments_path(post) do |f| %>
-    <%= f.input_field :text, placeholder: 'what\'s in your mind?' %><br />
-    <%= f.button :submit, 'Comment' %>
-  <% end %>
+    <div class="column is-half">
+      <div class="box">
+        <h1 class="title is-2 has-text-info"> Home </h1>
+        <div class="box">
+          <%= simple_form_for @post do |f| %>
+            <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"post-area" %><br />
+            <%= f.file_field :image %><br />
+            <%= f.button :submit, 'Post'%>
+          <% end %>
+        </div>
 
-<% end %>
+        <% @posts.each do |post| %>
+          <p><%= post.user.username %> said:</p>
+          <% if post.image.attached? %>
+            <div class="post-image">
+            <%= image_tag post.image %>
+            </div>
+          <% end %>
+          
+          <div><%= post.text %></div>
+          <% post.comments.each do |comment| %>
+            <%= comment.user.username %><br />
+            <%= comment.text %>
+          <% end %>
+          
+          <%= simple_form_for post.comments.new, url: post_comments_path(post) do |f| %>
+            <%= f.input_field :text, placeholder: 'what\'s in your mind?' %><br />
+            <%= f.button :submit, 'Comment' %>
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
+    <div class="column is-one-quarter has-text-centered padding-rigth">
+      <div class="box">
+        <h2 class="title is-4 has-text-info "> About bookclone </h2>
+        <span> 
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, sequi. 
+        </span>
+    </div>
+    </div>
+  </div>
+</main>
 
