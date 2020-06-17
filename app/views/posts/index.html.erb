@@ -73,15 +73,27 @@
                 </div>
               </div>
 
-              <% post.comments.each do |comment| %>
-                <%= comment.user.username %><br />
-                <%= comment.text %>
-              <% end %>
+              <div class="comment-form">
+                <div class="comment-avatar">
+                  <%= image_tag current_user.avatar, class: "profile-image" %>
+                </div>
+                <div class="comment-input">
+                  <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
+                    <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
+                    <%= f.button :submit, 'Comment' %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="comment-container">
+                <% post.comments.each do |comment| %>
+                  <%= comment.user.username %>
+                  <%= comment.text %>
+                <% end %>
+              </div>
               
-              <%= simple_form_for post.comments.new, url: post_comments_path(post) do |f| %>
-                <%= f.input_field :text, placeholder: 'what\'s in your mind?' %><br />
-                <%= f.button :submit, 'Comment' %>
-              <% end %>
+
+
             </div>
           <% end %>
         </div>

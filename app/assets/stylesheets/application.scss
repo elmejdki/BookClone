@@ -244,7 +244,6 @@ header {
       .reaction-container {
         display: flex;
         justify-content: flex-end;
-        
         .likes {
           display: flex;
           align-items: baseline;
@@ -265,6 +264,22 @@ header {
           color: $base-color;
           padding: 0 5px
           ;
+        }
+      }
+
+      .comment-form {
+        display: flex;
+        background-color: darkgray;
+        .comment-avatar {
+          height: 35px;
+          width: 35px;
+        }
+        .comment-input {
+          height: 150px;
+          .textarea{
+            height: 100px !important; 
+            width: 300px !important;
+          }
         }
       }
     }
