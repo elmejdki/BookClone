@@ -335,7 +335,7 @@ header {
           }
 
           .comment-body {
-            background-color: rgba(202, 202, 202, 0.335);
+            background-color: rgba(224, 224, 224, 0.26);
             border-radius: 30px;
             width: 100%;
             padding: 5px 15px;
@@ -352,6 +352,7 @@ header {
         .comment-action {
           display: flex;
           justify-content: flex-end;
+          align-items: baseline;
 
           .fa {
             color: $info;
@@ -373,9 +374,12 @@ header {
 .post-action-container {
   text-align: center;
   display: block;
-  margin-top: 20px;
   height: 30px;
   width: 30px;
+
+  i {
+    padding: 0 10px;
+  }
 }
 
 .post-action-menu {
