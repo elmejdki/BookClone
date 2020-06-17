@@ -37,22 +37,38 @@
             <div class="box">
               <%#=  FIX: wrap this inside a link tag that will direct the user to profile owner page %> 
               <div class="poster-identifier">
-                <div class="image-wrapper">
-                  <% if post.user.avatar.attached?  %>
-                    <%= image_tag post.user.avatar, class: 'profile-image' %>
-                  <% else %>
-                    <%#=  FIX: this should be fixed to select images based on gender %> 
-                    <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-                  <% end %>
+                <div class="poster-info">
+                  <div class="image-wrapper">
+                    <% if post.user.avatar.attached?  %>
+                      <%= image_tag post.user.avatar, class: 'profile-image' %>
+                    <% else %>
+                      <%#=  FIX: this should be fixed to select images based on gender %> 
+                      <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
+                    <% end %>
+                  </div>
+                  <div class="post-data">
+                    <span class="username">
+                      <%= post.user.username %>
+                    </span>
+                    <span class="date">
+                      <%= time_ago_in_words(post.created_at) %>
+                    </span>
+                  </div>
                 </div>
-                <div class="post-data">
-                  <span class="username">
-                    <%= post.user.username %>
-                  </span>
-                  <span class="date">
-                    <%= time_ago_in_words(post.created_at) %>
-                  </span>
+                <div class="post-actions">
+                  <div class="dropdown is-active">
+                    <div class="dropdown-trigger ">
+                      <a class="post-action-container"><i class="fas fa-ellipsis-v"></i></a>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                      <div class="dropdown-content post-action-menu">
+                       <%= link_to  "Edit", edit_post_path(post), class: "dropdown-item" %>
+                       <%= link_to  "Delete", post_path(post), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               </div>
 
               <div class="post-text">
@@ -104,6 +120,11 @@
                       </div>
                     </div>
                   </div>
+                  <div class="comment-action">
+                    <i class="fa fa-trash"></i>
+                    <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
+                  </div>
+
                 <% end %>
               </div>
             </div>
