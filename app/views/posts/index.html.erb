@@ -87,12 +87,17 @@
                 <% if user_signed_in? %>
                   <div class="likes">
                     <%# FIX: later we will bring those likes from the database %>
-                    <span> 23 </span>
-                    <a><i class="fas fa-thumbs-up"></i></a>
+                    <span><%= post.likes %></span>
+                    <%= link_to post_like_action_path(post), method: :post do %>
+                      <i class="fas fa-thumbs-up"></i>
+                    <% end %>
                   </div>
                   <div class="dislikes">
-                    <span> 9 </span>
-                    <a><i class="fas fa-thumbs-down"></i></a> 
+                    <span><%= post.dislikes %></span>
+
+                    <%= link_to post_dislike_action_path(post), method: :post do %>
+                      <i class="fas fa-thumbs-down"></i> 
+                    <% end %>
                   </div>
                 <% end %>
                 <div class="comments">
