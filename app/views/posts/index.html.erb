@@ -45,7 +45,14 @@
                     <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
                   <% end %>
                 </div>
-                <div class="username"><%= post.user.username %></div>
+                <div class="post-data">
+                  <span class="username">
+                    <%= post.user.username %>
+                  </span>
+                  <span class="date">
+                    <%= time_ago_in_words(post.created_at) %>
+                  </span>
+                </div>
               </div>
 
               <div class="post-text">
@@ -69,7 +76,7 @@
                   <a><i class="fas fa-thumbs-down"></i></a>
                 </div>
                 <div class="comments">
-                  <%= pluralize(post.comments.length, 'Comment') %>
+                  - <%= pluralize(post.comments.length, 'Comment') %>
                 </div>
               </div>
 
@@ -77,23 +84,28 @@
                 <div class="comment-avatar">
                   <%= image_tag current_user.avatar, class: "profile-image" %>
                 </div>
-                <div class="comment-input">
-                  <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
-                    <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
-                    <%= f.button :submit, 'Comment' %>
-                  <% end %>
-                </div>
-              </div>
-
-              <div class="comment-container">
-                <% post.comments.each do |comment| %>
-                  <%= comment.user.username %>
-                  <%= comment.text %>
+                <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
+                  <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
+                  <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
                 <% end %>
               </div>
-              
 
-
+              <div class="comments-container">
+                <% post.comments.each do |comment| %>
+                  <div class="comment">
+                    <div class="user-avatar">
+                      <%= image_tag comment.user.avatar, class: 'profile-image' %>
+                    </div>
+                    <div class="comment-body">
+                      <div class="flex">
+                        <%# FIX: this should be changed to a link that get the user page %>
+                        <span class='user-name'><%= comment.user.username %></span>
+                        <%= comment.text %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
