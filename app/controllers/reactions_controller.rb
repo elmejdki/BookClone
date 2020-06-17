@@ -3,7 +3,12 @@ class ReactionsController < ApplicationController
     reaction = Reaction.find_by(user_id: current_user.id, post_id: params[:post_id])
 
     unless reaction.nil?
-      update(reaction, true)
+      if reaction.like
+        reaction.destroy
+        redirect_to root_path
+      else  
+        update(reaction, true)
+      end
     else
       save(true)
     end
@@ -13,7 +18,12 @@ class ReactionsController < ApplicationController
     reaction = Reaction.find_by(user_id: current_user.id, post_id: params[:post_id])
 
     unless reaction.nil?
-      update(reaction, false)
+      if reaction.dislike
+        reaction.destroy
+        redirect_to root_path
+      else  
+        update(reaction, false)
+      end
     else
       save(false)
     end

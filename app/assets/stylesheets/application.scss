@@ -273,13 +273,21 @@ body {
         .likes {
           display: flex;
           align-items: baseline;
-          color: $base-color;
+          color: gray;
+
+          .has-text-base {
+            color: $base-color;
+          }
         }
         
         .dislikes {
           display: flex;
           align-items: flex-end;
-          color: $base-color;
+          color: gray;
+
+          .has-text-base {
+            color: $base-color;
+          }
 
           a {
             display: flex;
@@ -294,9 +302,14 @@ body {
           font-weight: bold;
         }
         
-        .fas {
-          color: $base-color;
-          padding: 0 5px;
+        
+
+        a {
+          color: gray;
+          .fas {
+            padding: 0 5px;
+          }
+
         }
       }
 
