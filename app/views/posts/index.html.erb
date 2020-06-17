@@ -119,7 +119,7 @@
                     </div>
                   </div>
                   <div class="comment-action">
-                    <a href="#"><i class="fa fa-trash"></i></a>
+                    <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
                     <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
                   </div>
 

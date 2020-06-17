@@ -7,6 +7,15 @@ class CommentsController < ApplicationController
       redirect_to root_path, alert: "Your comment was not posted"
     end
   end
+  
+  def destroy
+    if Comment.find(params[:id]).destroy
+      redirect_to root_path, notice: "Comment deleted"
+    else
+      redirect_to root_path, alert: "Your comment was not posted"
+    end
+  end
+
 
   private
 

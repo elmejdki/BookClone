@@ -14,6 +14,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    if Post.find(params[:id]).update(post_params)
+      redirect_to root_path, notice: 'post updated'
+    else
+      redirect_to root_path, alert: 'some dumb thing happened'
+    end
+  end
+
+  
+  def destroy
+    if Post.find(params[:id]).destroy
+      redirect_to root_path, notice: 'post deleted'
+    else
+      redirect_to root_path, alert: 'some dumb thing happened'
+    end
+  end
+
   private
 
   def post_params
