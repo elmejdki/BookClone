@@ -40,6 +40,12 @@ $base-color: rgba(0, 119, 255, 0.836);
 }
 
 header {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 100;
+
   .nav-bar {
     padding: 0 10px;
     height: 40px;
@@ -47,7 +53,6 @@ header {
     display: flex;
     align-items: center;
     box-shadow: 1px 1px 11px -4px rgba(0, 0, 0, 0.507);
-    margin-bottom: 10px;
     justify-content: space-between;
     
     .nav-bar-content {
@@ -119,6 +124,10 @@ header {
       padding-left: 10px;
     }
   }
+}
+
+body {
+  margin-top: 70px;
 }
 
 .notification {

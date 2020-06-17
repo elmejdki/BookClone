@@ -13,22 +13,24 @@
     <div class="column is-half">
       <div class="timeline-container">
         <h1 class="title is-2 has-text-base has-text-centered"> Home </h1>
-        <div class="post-form">
-          <%= simple_form_for @post do |f| %>
-            <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
-            <div class="file has-name">
-              <label class="file-label">
-                <%= f.file_field :image, class: 'file-input' %>
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fa fa-image"></i>
+        <% if user_signed_in? %>
+          <div class="post-form">
+            <%= simple_form_for @post do |f| %>
+              <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
+              <div class="file has-name">
+                <label class="file-label">
+                  <%= f.file_field :image, class: 'file-input' %>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-image"></i>
+                    </span>
                   </span>
-                </span>
-              </label>
-            </div>
-            <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
-          <% end %>
-        </div>
+                </label>
+              </div>
+              <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
+            <% end %>
+          </div>
+        <% end %>
 
         <div class="posts-container">
           <% @posts.each do |post| %>
@@ -53,19 +55,21 @@
                     </span>
                   </div>
                 </div>
-                <div class="post-actions">
-                  <div class="dropdown">
-                    <div class="dropdown-trigger">
-                      <a class="post-action-container"><i class="fas fa-ellipsis-v"></i></a>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                      <div class="dropdown-content post-action-menu">
-                       <%= link_to  "Edit", edit_post_path(post), class: "dropdown-item" %>
-                       <%= link_to  "Delete", post_path(post), method: :delete, class: "dropdown-item" %>
+                <% if current_user == post.user %>
+                  <div class="post-actions">
+                    <div class="dropdown">
+                      <div class="dropdown-trigger">
+                        <a class="post-action-container"><i class="fas fa-ellipsis-v"></i></a>
+                      </div>
+                      <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                        <div class="dropdown-content post-action-menu">
+                        <%= link_to  "Edit", edit_post_path(post), class: "dropdown-item" %>
+                        <%= link_to  "Delete", post_path(post), method: :delete, class: "dropdown-item" %>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
 
               </div>
 
@@ -80,29 +84,33 @@
               <% end %>
 
               <div class="reaction-container">
-                <div class="likes">
-                  <%# FIX: later we will bring those likes from the database %>
-                  <span> 23 </span>
-                  <a><i class="fas fa-thumbs-up"></i></a>
-                </div>
-                <div class="dislikes">
-                  <span> 9 </span>
-                  <a><i class="fas fa-thumbs-down"></i></a>
-                </div>
+                <% if user_signed_in? %>
+                  <div class="likes">
+                    <%# FIX: later we will bring those likes from the database %>
+                    <span> 23 </span>
+                    <a><i class="fas fa-thumbs-up"></i></a>
+                  </div>
+                  <div class="dislikes">
+                    <span> 9 </span>
+                    <a><i class="fas fa-thumbs-down"></i></a> 
+                  </div>
+                <% end %>
                 <div class="comments">
-                  - <%= pluralize(post.comments.length, 'Comment') %>
+                  <%= pluralize(post.comments.length, 'Comment') %>
                 </div>
               </div>
 
-              <div class="comment-form">
-                <div class="comment-avatar">
-                  <%= image_tag current_user.avatar, class: "profile-image" %>
+              <% if user_signed_in? %>
+                <div class="comment-form">
+                  <div class="comment-avatar">
+                    <%= image_tag current_user.avatar, class: "profile-image" %>
+                  </div>
+                  <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
+                    <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
+                    <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
+                  <% end %>
                 </div>
-                <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
-                  <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
-                  <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
-                <% end %>
-              </div>
+              <% end %>
 
               <div class="comments-container">
                 <% post.comments.each do |comment| %>
@@ -119,7 +127,9 @@
                     </div>
                   </div>
                   <div class="comment-action">
-                    <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
+                    <% if comment.user == current_user %>
+                      <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
+                    <% end %>
                     <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
                   </div>
 

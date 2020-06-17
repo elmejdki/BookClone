@@ -16,6 +16,7 @@ gem 'better_errors', '~> 2.7', '>= 2.7.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'image_processing'
 gem "aws-sdk-s3"
+gem "figaro"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
