@@ -1,16 +1,33 @@
 <main class="main-container">
   <div class="columns column-style">
-    <div class="column is-one-quarter has-text-centered">
+    <div class="column is-one-fifths">
       <% if user_signed_in? %>
         <div class="profile-container">
-          <% if current_user.avatar.attached?  %>
-            <%= image_tag current_user.avatar, class: 'profile-image' %>
-          <% end %>
-          <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+          <div class="avatar">
+            <% if current_user.avatar.attached?  %>
+              <%= image_tag current_user.avatar, class: 'profile-image' %>
+            <% end %>
+            <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+          </div>
+          <div class="username"><%= current_user.username %></div>
+          <div class="profile_links">
+            <div class="feeds">
+              <i class=""></i>
+              feeds
+            </div>
+            <div class="friends">
+              <i class=""></i>
+              feeds
+            </div>
+            <div class="messages">
+              <i class=""></i>
+              feeds
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-    <div class="column is-half">
+    <div class="column is-three-fifths">
       <div class="timeline-container">
         <h1 class="title is-2 has-text-base has-text-centered"> Home </h1>
         <% if user_signed_in? %>
@@ -86,7 +103,6 @@
               <div class="reaction-container">
                 <% if user_signed_in? %>
                   <div class="likes">
-                    <%# FIX: later we will bring those likes from the database %>
                     <span class="<% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"><%= post.likes %></span>
                     <%= link_to post_like_action_path(post), method: :post do %>
                       <i class="fas fa-thumbs-up <% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"></i>
@@ -125,7 +141,7 @@
               <% end %>
 
               <div class="comments-container">
-                <% post.comments.each do |comment| %>
+                <% post.comments.reverse.each do |comment| %>
                   <div class="comment">
                     <div class="user-avatar">
                       <%= image_tag comment.user.avatar, class: 'profile-image' %>
@@ -177,7 +193,7 @@
         </div>
       </div>
     </div>
-    <div class="column is-one-quarter has-text-centered padding-rigth">
+    <div class="column is-one-fifths has-text-centered padding-rigth">
       <div class="box">
         <h2 class="title is-4 has-text-base"> About bookclone </h2>
         <span> 
