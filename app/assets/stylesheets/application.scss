@@ -141,7 +141,9 @@ body {
   object-fit: cover;
 }
 
-
+.is-one-fifths {
+  margin-top: 80px;
+}
 
 .main-container {
   display: flex;
@@ -190,6 +192,32 @@ body {
       color: $base-color;
     }
 
+    .bio {
+      color: rgba(156, 156, 156, 0.658);
+      text-transform: capitalize;
+      text-align: justify;
+      width: 235px;
+      margin: 10px;
+
+      i {
+        color: black;
+        margin-right: 10px;
+      }
+    }
+
+    .profile_links {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        font-size: 30px;
+        padding: 5px 20px;
+        margin: 10px 0;
+        border: 1px solid rgb(200, 200, 200);
+        color: $base-color;
+        border-radius: 20px;
+      }
+    }
   }
 
   .timeline-container {

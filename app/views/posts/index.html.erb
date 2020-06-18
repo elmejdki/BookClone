@@ -10,19 +10,20 @@
             <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
           </div>
           <div class="username"><%= current_user.username %></div>
+          <div class="bio"><i class="fas fa-user"></i>Proin non elit nunc. Vivamus ut risus odio. Suspendisse nec urna nec metus placerat egestas. Suspendisse sit amet maximus est. Integer at tellus justo. Pellentesque et luctus lectus. Nullam tempor vel est sollicitudin posuere. In lorem elit, tincidunt nec posuere in, condimentum volutpat magna.</div>
           <div class="profile_links">
-            <div class="feeds">
-              <i class=""></i>
-              feeds
-            </div>
-            <div class="friends">
-              <i class=""></i>
-              feeds
-            </div>
-            <div class="messages">
-              <i class=""></i>
-              feeds
-            </div>
+            <%= link_to root_path,class: 'feeds' do %>
+                <i class="fas fa-home"></i>
+                Feeds
+            <% end %>
+            <%= link_to root_path,class: 'friends' do %>
+                <i class="fas fa-user-friends"></i>
+                Friends
+            <% end %>
+            <%= link_to root_path,class: 'messages' do %>
+                <i class="fas fa-envelope"></i>
+                Messages
+            <% end %>
           </div>
         </div>
       <% end %>
