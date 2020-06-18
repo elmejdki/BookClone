@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @friends = current_user.friends
-    @non_friends =  User.all.filter{ |user| !@friends.include?(user) }
+    @non_friends = User.all.filter{ |user| !@friends.include?(user) && current_user != user }
   end
 
   def new_avatar

@@ -1,0 +1,20 @@
+
+<h2> Friends sugestions </h2>
+<% @non_friends.each do |friend| %>
+  <div>
+    <%= friend.username %>
+    <% unless current_user.pending_friends.include?(friend)%>  
+        <%= link_to "Send invitation", friendships_path(user_id: current_user.id ,friend_id: friend.id), method: :post %>
+    <% else %>
+        Pending response
+    <% end %>
+  </div>
+<% end %>
+
+<h2>Friend Requests</h2>
+<% current_user.friend_requests.each do |friend| %>
+  <div>
+    <%= friend.username %>
+    <%= link_to "Accept Invitation", confirm_friend_path(friend_id: friend.id), method: :post%>
+  </div>
+<% end %>
