@@ -9,12 +9,9 @@ class FriendshipsController < ApplicationController
   end
 
   def confirm
-    user = User.find_by(params[:friend_id])
-    puts "###################"
-    puts user.username
-    puts "###################"
-    current_user.confirm_friend(user)
-    redirect_to users_path, notice: 'Invitation acceted'
+    friend = User.find(params[:friend_id])
+    current_user.confirm_friend(friend)
+    redirect_to users_path, notice: 'Invitation accepted'
   end
 
   private

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: { in: 3..15 }
   validates :email, presence: true, uniqueness: true, format: Devise.email_regexp
   
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
 
   has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships, source: :user
@@ -30,11 +30,10 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(friend)
-    pending_friendships.find_by(friend_id: friend[:id]).update(confirmed: true)
+    self.inverted_friendships.find_by(user_id: friend).update(confirmed: true)
   end
 
   def friend?(user)
     friends.include?(user)
   end
 end
-

@@ -210,7 +210,7 @@ body {
       flex-direction: column;
 
       a {
-        font-size: 30px;
+        font-size: 25px;
         padding: 5px 20px;
         margin: 10px 0;
         border: 1px solid rgb(200, 200, 200);
@@ -452,4 +452,20 @@ body {
 
 .post-action-menu {
   width: 80px;
+}
+
+.suggested-friend {
+  height: 120px;
+  display: flex;
+  margin: 0 10px 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: #4a4a4a;
+  align-items: center;
+  
+  .suggested-friend-image {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+  }
 }
