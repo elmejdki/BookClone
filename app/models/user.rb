@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   def friends_and_own_posts
     users = friends << self
-    Post.where(user: users)
+    Post.where(user: users).order('created_at DESC')
   end
 
   def confirm_friend(friend)

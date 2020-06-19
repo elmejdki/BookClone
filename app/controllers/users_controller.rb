@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @friends = current_user.friends
-    @non_friends = User.all.filter{ |user| !@friends.include?(user) && current_user != user }
+    @non_friends = User.all.filter{ |user| 
+      !@friends.include?(user) &&
+      current_user != user &&
+      !current_user.pending_friends.include?(user) &&
+      !current_user.friend_requests.include?(user)
+    }
   end
 
   def new_avatar

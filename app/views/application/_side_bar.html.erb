@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.last_friend_requests.length > 0 %>
 <div class= "box">
   <h2 class="title is-5">Last Friend Requests</h2>
   <div class="requests-container">

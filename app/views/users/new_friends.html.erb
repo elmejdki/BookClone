@@ -1,21 +1,33 @@
-<h1 class="title is-3 has-text-base has-text-centered">Friend Requests</h2>
-<div class="requests-container">
-  <% current_user.friend_requests.each do |friend| %>
-  <div class="request">
-    <div class="user-image">
-      <% if friend.avatar.attached? %>
-        <%= image_tag friend.avatar, class: 'profile-image' %>
-      <% else %>
-        <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+<div class="column is-one-fifth">
+  <%= render 'user_profile' %>
+</div>
+<div class= "column is-three-fifths">
+  <h1 class="title is-3 has-text-base has-text-centered">Friend Requests</h2>
+  <div class="requests-container">
+    <% if current_user.friend_requests.empty? %>
+      <p class="note">there is no new friend request try to be more active to connect to more people</p>
+    <% else %>
+      <% current_user.friend_requests.each do |friend| %>
+        <div class="request">
+          <div class="user-image">
+            <% if friend.avatar.attached? %>
+              <%= image_tag friend.avatar, class: 'profile-image' %>
+            <% else %>
+              <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+            <% end %>
+          </div>
+          <div class="user-info">
+            <span class="username"><%= friend.username %></span>
+            <div class="buttons">
+              <%= link_to "Accept", confirm_friend_path(friend_id: friend.id), method: :post,class: 'button is-small is-base' %>
+              <%= link_to "Decline", friendship_path(friend), method: :post, method: :delete, class: 'button is-small is-out-base' %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <div class="user-info">
-      <span class="username"><%= friend.username %></span>
-      <div class="buttons">
-        <%= link_to "Accept", confirm_friend_path(friend_id: friend.id), method: :post,class: 'button is-small is-base' %>
-        <%= link_to "Decline", friendship_path(friend), method: :post, method: :delete, class: 'button is-small is-out-base' %>
-      </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+<div class="column is-one-fifth has-text-centered padding-rigth">
+  <%= render 'side_bar' %>
 </div>

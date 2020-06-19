@@ -1,165 +1,172 @@
-<div class="timeline-container">
-  <h1 class="title is-2 has-text-base has-text-centered"> Home </h1>
-  <% if user_signed_in? %>
-    <div class="post-form">
-      <%= simple_form_for @post do |f| %>
-        <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
-        <div class="file has-name">
-          <label class="file-label">
-            <%= f.file_field :image, class: 'file-input' %>
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fa fa-image"></i>
+<div class="column is-one-fifth">
+  <%= render 'user_profile' %>
+</div>
+<div class= "column is-three-fifths">
+  <div class="timeline-container">
+    <h1 class="title is-2 has-text-base has-text-centered"> Home </h1>
+    <% if user_signed_in? %>
+      <div class="post-form">
+        <%= simple_form_for @post do |f| %>
+          <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
+          <div class="file has-name">
+            <label class="file-label">
+              <%= f.file_field :image, class: 'file-input' %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa fa-image"></i>
+                </span>
               </span>
-            </span>
-          </label>
-        </div>
-        <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="posts-container">
-    <% @posts.each do |post| %>
-      <div class="box">
-        <%#=  FIX: wrap this inside a link tag that will direct the user to profile owner page %> 
-        <div class="poster-identifier">
-          <div class="poster-info">
-            <div class="image-wrapper">
-              <% if post.user.avatar.attached?  %>
-                <%= image_tag post.user.avatar, class: 'profile-image' %>
-              <% else %>
-                <%#=  FIX: this should be fixed to select images based on gender %> 
-                <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-              <% end %>
-            </div>
-            <div class="post-data">
-              <span class="username">
-                <%= post.user.username %>
-              </span>
-              <span class="date">
-                <%= time_ago_in_words(post.created_at) %>
-              </span>
-            </div>
+            </label>
           </div>
-          <% if current_user == post.user %>
-            <div class="post-actions">
-              <div class="dropdown">
-                <div class="dropdown-trigger">
-                  <a class="post-action-container"><i class="fas fa-ellipsis-v"></i></a>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                  <div class="dropdown-content post-action-menu">
-                  <%= link_to  "Edit", edit_post_path(post), class: "dropdown-item" %>
-                  <%= link_to  "Delete", post_path(post), method: :delete, class: "dropdown-item" %>
+          <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="posts-container">
+      <% @posts.each do |post| %>
+        <div class="box">
+          <%#=  FIX: wrap this inside a link tag that will direct the user to profile owner page %> 
+          <div class="poster-identifier">
+            <div class="poster-info">
+              <div class="image-wrapper">
+                <% if post.user.avatar.attached?  %>
+                  <%= image_tag post.user.avatar, class: 'profile-image' %>
+                <% else %>
+                  <%#=  FIX: this should be fixed to select images based on gender %> 
+                  <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
+                <% end %>
+              </div>
+              <div class="post-data">
+                <span class="username">
+                  <%= post.user.username %>
+                </span>
+                <span class="date">
+                  <%= time_ago_in_words(post.created_at) %>
+                </span>
+              </div>
+            </div>
+            <% if current_user == post.user %>
+              <div class="post-actions">
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <a class="post-action-container"><i class="fas fa-ellipsis-v"></i></a>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                    <div class="dropdown-content post-action-menu">
+                    <%= link_to  "Edit", edit_post_path(post), class: "dropdown-item" %>
+                    <%= link_to  "Delete", post_path(post), method: :delete, class: "dropdown-item" %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-
-        </div>
-
-        <div class="post-text">
-          <%= post.text %>
-        </div>
-
-        <% if post.image.attached? %>
-          <div class="post-image">
-            <%= image_tag post.image %>
-          </div>
-        <% end %>
-
-        <div class="reaction-container">
-          <% if user_signed_in? %>
-            <div class="likes">
-              <span class="<% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"><%= post.likes %></span>
-              <%= link_to post_like_action_path(post), method: :post do %>
-                <i class="fas fa-thumbs-up <% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"></i>
-              <% end %>
-            </div>
-            <div class="dislikes">
-              <span class="<% if post.disliked(current_user) %><%= 'has-text-base' %><% end %>"><%= post.dislikes %></span>
-
-              <%= link_to post_dislike_action_path(post), method: :post do %>
-                <i class="fas fa-thumbs-down <% if post.disliked(current_user) %><%= 'has-text-base' %><% end %>"></i> 
-              <% end %>
-            </div>
-          <% end %>
-          <div class="comments">
-            <%= pluralize(post.comments.length, 'Comment') %>
-          </div>
-        </div>
-
-        <% if user_signed_in? %>
-          <div class="comment-form">
-            <div class="comment-avatar">
-
-              <% if current_user.avatar.attached?  %>
-                <%= image_tag current_user.avatar, class: "profile-image" %>  
-              <% else %>
-                <%#=  FIX: this should be fixed to select images based on gender %> 
-                <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-              <% end %>
-
-            </div>
-            <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
-              <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
-              <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
             <% end %>
-          </div>
-        <% end %>
 
-        <div class="comments-container">
-          <% post.comments.reverse.each do |comment| %>
-            <div class="comment">
-              <div class="user-avatar">
-                <%= image_tag comment.user.avatar, class: 'profile-image' %>
+          </div>
+
+          <div class="post-text">
+            <%= post.text %>
+          </div>
+
+          <% if post.image.attached? %>
+            <div class="post-image">
+              <%= image_tag post.image %>
+            </div>
+          <% end %>
+
+          <div class="reaction-container">
+            <% if user_signed_in? %>
+              <div class="likes">
+                <span class="<% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"><%= post.likes %></span>
+                <%= link_to post_like_action_path(post), method: :post do %>
+                  <i class="fas fa-thumbs-up <% if post.liked(current_user) %><%= 'has-text-base' %><% end %>"></i>
+                <% end %>
               </div>
-              <div class="comment-body">
-                <div class="flex">
-                  <%# FIX: this should be changed to a link that get the user page %>
-                  <span class='user-name'><%= comment.user.username %></span>
-                  <%= comment.text %>
+              <div class="dislikes">
+                <span class="<% if post.disliked(current_user) %><%= 'has-text-base' %><% end %>"><%= post.dislikes %></span>
+
+                <%= link_to post_dislike_action_path(post), method: :post do %>
+                  <i class="fas fa-thumbs-down <% if post.disliked(current_user) %><%= 'has-text-base' %><% end %>"></i> 
+                <% end %>
+              </div>
+            <% end %>
+            <div class="comments">
+              <%= pluralize(post.comments.length, 'Comment') %>
+            </div>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="comment-form">
+              <div class="comment-avatar">
+
+                <% if current_user.avatar.attached?  %>
+                  <%= image_tag current_user.avatar, class: "profile-image" %>  
+                <% else %>
+                  <%#=  FIX: this should be fixed to select images based on gender %> 
+                  <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
+                <% end %>
+
+              </div>
+              <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
+                <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
+                <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="comments-container">
+            <% post.comments.reverse.each do |comment| %>
+              <div class="comment">
+                <div class="user-avatar">
+                  <%= image_tag comment.user.avatar, class: 'profile-image' %>
+                </div>
+                <div class="comment-body">
+                  <div class="flex">
+                    <%# FIX: this should be changed to a link that get the user page %>
+                    <span class='user-name'><%= comment.user.username %></span>
+                    <%= comment.text %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="comment-action">
-              <% if comment.user == current_user %>
-                <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
-              <% end %>
-              <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
-            </div>
+              <div class="comment-action">
+                <% if comment.user == current_user %>
+                  <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
+                <% end %>
+                <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
+              </div>
 
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-    <script>
-      const post_dropdowns = document.getElementsByClassName('dropdown-trigger');
-      const dropdowns = document.getElementsByClassName('dropdown');
+      <% end %>
+      <script>
+        const post_dropdowns = document.getElementsByClassName('dropdown-trigger');
+        const dropdowns = document.getElementsByClassName('dropdown');
 
-      const toggleMenu = (e) => {
-        e.target.parentElement.parentElement.parentElement.classList.toggle('is-active');
-        e.stopPropagation()
-      }
-
-      const hideMenu = (e) => {
-        if(e.target.className.includes('post-action-container')) {
-        }else {    
-          Array.prototype.slice.call(dropdowns).forEach(item => {
-              item.classList.remove('is-active');
-          })
+        const toggleMenu = (e) => {
+          e.target.parentElement.parentElement.parentElement.classList.toggle('is-active');
+          e.stopPropagation()
         }
-      }
 
-      Array.prototype.slice.call(post_dropdowns).forEach(item => {
-        console.log(item)
-        item.addEventListener('click', toggleMenu);
-      });
+        const hideMenu = (e) => {
+          if(e.target.className.includes('post-action-container')) {
+          }else {    
+            Array.prototype.slice.call(dropdowns).forEach(item => {
+                item.classList.remove('is-active');
+            })
+          }
+        }
 
-      document.addEventListener('click', hideMenu);
-    </script>
+        Array.prototype.slice.call(post_dropdowns).forEach(item => {
+          console.log(item)
+          item.addEventListener('click', toggleMenu);
+        });
+
+        document.addEventListener('click', hideMenu);
+      </script>
+    </div>
   </div>
 </div>
-
+<div class="column is-one-fifth has-text-centered padding-rigth">
+  <%= render 'side_bar' %>
+</div>

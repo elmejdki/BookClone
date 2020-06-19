@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = current_user.friends_and_own_posts
     @post = Post.new
   end
 
