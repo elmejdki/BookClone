@@ -18,7 +18,7 @@
       <div class= "suggested-friend">
           <div class="suggested-friend-image">
             <% if friend.avatar.attached?  %>
-              <%= image_tag friend.avatar, class: "" %>  
+              <%= image_tag friend.avatar, class: "profile-image" %>  
             <% else %>
               <%#=  FIX: this should be fixed to select images based on gender %> 
               <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
