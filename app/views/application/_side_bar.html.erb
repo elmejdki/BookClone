@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+<div class= "box">
+  <h2 class="title is-5">Last Friend Requests</h2>
+  <div class="requests-container">
+    <% current_user.last_friend_requests.each do |friend| %>
+      <div class="request total-width">
+        <div class="user-image">
+          <% if friend.avatar.attached? %>
+            <%= image_tag friend.avatar, class: 'profile-image' %>
+          <% else %>
+            <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+          <% end %>
+        </div>
+        <div class="user-info">
+          <span class="username"><%= friend.username %></span>
+          <div class="action">
+            <%= link_to confirm_friend_path(friend_id: friend.id), method: :post do %>
+              <i class="fas fa-check has-text-base"></i>
+            <% end %>
+            <%= link_to friendship_path(friend), method: :post, method: :delete do %>
+              <i class="fas fa-times has-text-danger"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<div class="box">
+  <h2 class="title is-4 has-text-base"> About bookclone </h2>
+  <span> 
+  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, sequi. 
+  </span>
+</div>

@@ -16,4 +16,8 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: 'avatar wasn\'t updated for some raison.'
     end
   end
+
+  def new_friends
+    
+  end
 end

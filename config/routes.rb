@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   patch '/update_avatar', to: 'users#update_avatar', as: :update_avatar
 
   post '/confirm_friend/', to: 'friendships#confirm'
+  get '/friend_requests', to: 'users#new_friends', as: :friend_requests
   
   devise_for :users
   resources :users, only: [:index, :show] 
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
     post '/dislike', to: 'reactions#dislike', as: :dislike_action
     resources :comments
   end
-  resources :friendships
+  resources :friendships, only: [:index, :create, :destroy, :update]
 end

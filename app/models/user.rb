@@ -31,10 +31,14 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(friend)
-    self.inverted_friendships.find_by(user_id: friend).update(confirmed: true)
+    inverted_friendships.find_by(user_id: friend).update(confirmed: true)
   end
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def last_friend_requests
+    friend_requests.order(created_at: :desc).limit(4)
   end
 end

@@ -47,7 +47,7 @@
           </a>
           <!-- FIX: these links need to be changed -->
           <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
-          <%= link_to 'Members', users_path, class: 'nav-bar-item' %>
+          <%= link_to 'New Members', users_path, class: 'nav-bar-item' %>
           <%= link_to 'Messages', root_path, class: 'nav-bar-item' %>
         </div>
         <div class="search-bar">
@@ -65,6 +65,18 @@
       </nav>
     </header>
 
-    <%= yield %>
+    <main class="main-container">
+      <div class="columns column-style">
+        <div class="column is-one-fifth">
+          <%= render 'user_profile' %>
+        </div>
+        <div class= "column is-three-fifths">
+          <%= yield %>
+        </div>
+        <div class="column is-one-fifth has-text-centered padding-rigth">
+          <%= render 'side_bar' %>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
