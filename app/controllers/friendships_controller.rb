@@ -1,6 +1,9 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+  end
+
   def create
     friendship = Friendship.new(friendship_params)
     if friendship.save
@@ -17,9 +20,13 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
+    friendship = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
     friendship.destroy
-    redirect_to friend_requests_path, notice: 'Friend Request was declined.'
+
+    inverse_friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
+    friendship.destroy unless inverse_friendship.nil?
+
+    redirect_to friendships_path, notice: 'Friend Request was declined.'
   end
 
   private

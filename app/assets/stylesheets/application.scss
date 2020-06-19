@@ -17,6 +17,7 @@
 @import "bulma";
 
 $base-color: rgba(0, 119, 255, 0.836);
+$off-black: rgba(90, 90, 90, 0.555);
 
 .has-text-base {
   color: $base-color;
@@ -145,8 +146,30 @@ body {
   margin-top: 70px;
 }
 
-.username {
+.underline:hover {
+  text-decoration: underline;
+}
+
+.name {
   font-weight: bold;
+}
+
+.username {
+  font-size: 10px;
+  color: rgba(90, 90, 90, 0.555);
+  text-transform: lowercase;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .note {
@@ -155,8 +178,51 @@ body {
   text-align: center;
 }
 
+.text-small {
+  font-size: 10px;
+}
+
 .total-width {
   width: 100%
+}
+
+.user-info-container {
+  position: relative;
+  margin-bottom: 50px;
+
+  .cover-picture {
+    .cover-image {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .profile-container {
+    position: absolute;
+    left: 163px;
+    bottom: -21px;
+    width: auto !important;
+
+    .user-info {
+      position: absolute;
+      right: -280px;
+      top: 20px;
+
+      .name {
+        color: white;
+        font-size: 30px;
+      }
+
+      .username {
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 20px;
+      }
+    }
+  }
 }
 
 .main-container {
@@ -179,9 +245,11 @@ body {
       margin: 10px;
       box-shadow: 0px 0px 11px -4px black;
       border-radius: 10px;
+      width: 300px;
   
       .user-image {
-        width: 60px;
+        max-width: 60px;
+        min-width: 60px;
         height: 60px;
         margin-right: 10px;
       }
@@ -190,6 +258,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 70%;
 
         .username {
           font-weight: bold;

@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag 'application', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -66,7 +67,7 @@
     </header>
 
     <main class="main-container">
-      <div class="columns column-style">
+      <div class="columns is-centered column-style">
         <%= yield %>
       </div>
     </main>

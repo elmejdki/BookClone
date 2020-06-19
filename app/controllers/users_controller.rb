@@ -11,12 +11,18 @@ class UsersController < ApplicationController
     }
   end
 
+  def show
+    @user = User.find(params[:id])
+    @post = Post.new
+  end
+
   def new_avatar
     @user = current_user
   end
 
   def update_avatar
     @user = current_user
+
     if @user.update(avatar: params[:user][:avatar])
       redirect_to root_path, notice: 'avatar was updated successfully.'
     else

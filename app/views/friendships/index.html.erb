@@ -1,0 +1,69 @@
+<div class="column is-one-fifth">
+  <%= render 'user_profile' %>
+</div>
+<div class= "column is-three-fifths columns">
+  <div class="column is-half">
+    <h1 class="title is-3 has-text-base has-text-centered">Friends</h2>
+    <div class="requests-container">
+      <% if current_user.friends.empty? %>
+        <p class="note">Wow, you have no friends, how could that be possible?</p>
+      <% else %>
+        <% current_user.friends.each do |friend| %>
+          <div class="request">
+            <div class="user-image">
+              <% if friend.avatar.attached? %>
+                <%= image_tag friend.avatar, class: 'profile-image' %>
+              <% else %>
+                <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+              <% end %>
+            </div>
+            <div class="user-info">
+              <span class="name"><%= friend.fullname %></span>
+              <div class="d-flex space-between">
+                <span class="d-flex flex-column">
+                  <span class="username">@<%= friend.username %></span>
+                  <span class="text-small"><%= friend.city %></span>
+                </span>
+                <%= link_to 'Remove', friendship_path(friend), method: :delete, class: 'button is-danger is-small' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="column is-half">
+    <h1 class="title is-3 has-text-base has-text-centered">Pending Friends</h2>
+    <div class="requests-container">
+      <% if current_user.pending_friends.empty? %>
+        <p class="note">no pending friends for now, think of adding new friends? <%= link_to 'click here', users_path %></p>
+      <% else %>
+        <% current_user.pending_friends.each do |friend| %>
+          <div class="request">
+            <div class="user-image">
+              <% if friend.avatar.attached? %>
+                <%= image_tag friend.avatar, class: 'profile-image' %>
+              <% else %>
+                <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+              <% end %>
+            </div>
+            <div class="user-info">
+              <span class="name"><%= friend.fullname %></span>
+              <div class="d-flex space-between">
+                <span class="d-flex flex-column">
+                  <span class="username">@<%= friend.username %></span>
+                  <span class="text-small"><%= friend.city %></span>
+                  <span class="username">pending invitation</span>
+                </span>
+                <%= link_to 'Cancel', friendship_path(friend), method: :delete, class: 'button is-success is-small' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="column is-one-fifth has-text-centered padding-rigth">
+  <%= render 'side_bar' %>
+</div>
