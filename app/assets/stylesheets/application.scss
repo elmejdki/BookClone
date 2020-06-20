@@ -191,11 +191,22 @@ body {
   margin-bottom: 50px;
 
   .cover-picture {
+    position: relative;
+
     .cover-image {
       height: 300px;
       width: 100%;
       object-fit: cover;
       object-position: center;
+    }
+
+    .cover-button {
+      width: 130px;
+      text-align: center;
+      position: absolute;
+      right: 40px;
+      bottom: 0;
+      left: inherit;
     }
   }
 
@@ -214,7 +225,7 @@ body {
         color: white;
         font-size: 30px;
       }
-
+      
       .username {
         color: white;
         font-size: 12px;
@@ -222,6 +233,21 @@ body {
         top: 20px;
       }
     }
+  }
+}
+.image-link {
+  position: absolute;
+  padding: 1px 10px;
+  bottom: -10px;
+  left: 0px;
+  color: $base-color;
+  font-weight: bold;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 0px 8px -3px black;
+  
+  &:hover {
+    color: black;  
   }
 }
 
@@ -298,22 +324,6 @@ body {
       height: 100px;
       border-radius: 50%;
       box-shadow: 4px 4px 21px 2px #888888;
-
-      .image-link {
-        position: absolute;
-        padding: 1px 10px;
-        bottom: -10px;
-        left: 0px;
-        color: $base-color;
-        font-weight: bold;
-        background-color: white;
-        width: 100%;
-        box-shadow: 0px 0px 8px -3px black;
-        
-        &:hover {
-          color: black;  
-        }
-      }
     }
 
     .username {

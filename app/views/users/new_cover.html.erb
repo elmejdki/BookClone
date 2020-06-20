@@ -1,0 +1,7 @@
+<h1>Update Cover Image</h1>
+
+<%= simple_form_for @user, url: update_cover_path do |f| %>
+  <%= f.file_field :cover_picture %>
+  <br />
+  <%= f.button :submit, 'Update Cover Image' %>
+<% end %>

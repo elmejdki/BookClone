@@ -29,6 +29,20 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: 'avatar wasn\'t updated for some raison.'
     end
   end
+  
+  def new_cover
+    @user = current_user
+  end
+  
+    def update_cover
+      @user = current_user
+  
+      if @user.update(cover_picture: params[:user][:cover_picture])
+        redirect_to root_path, notice: 'cover image was updated successfully.'
+      else
+        redirect_to root_path, alert: 'cover iamge wasn\'t updated for some raison.'
+      end
+    end
 
   def new_friends
     

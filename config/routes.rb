@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/new_avatar', to: 'users#new_avatar', as: :new_avatar
   patch '/update_avatar', to: 'users#update_avatar', as: :update_avatar
+  get '/new_cover', to: 'users#new_cover', as: :new_cover
+  patch '/update_cover', to: 'users#update_cover', as: :update_cover
 
   post '/confirm_friend/', to: 'friendships#confirm'
   get '/friend_requests', to: 'users#new_friends', as: :friend_requests
