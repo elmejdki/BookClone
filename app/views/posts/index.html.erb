@@ -120,7 +120,13 @@
             <% post.comments.reverse.each do |comment| %>
               <div class="comment">
                 <div class="user-avatar">
-                  <%= image_tag comment.user.avatar, class: 'profile-image' %>
+                  <%= link_to user_path(comment.user) do %>
+                    <% if comment.user.avatar.attached? %>
+                      <%= image_tag comment.user.avatar, class: 'profile-image' %>
+                    <% else %>
+                      <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+                    <% end %>
+                  <% end %>
                 </div>
                 <div class="comment-body">
                   <div class="flex">

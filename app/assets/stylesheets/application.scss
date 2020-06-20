@@ -47,6 +47,13 @@ header {
   width: 100%;
   z-index: 100;
 
+  .notification {
+    position: absolute;
+    top: 80px;
+    width: 60%;
+    right: 20%;
+  }
+
   .nav-bar {
     padding: 0 10px;
     height: 40px;
@@ -218,6 +225,7 @@ body {
 
     .user-info {
       position: absolute;
+      width: 270px;
       right: -280px;
       top: 20px;
 
