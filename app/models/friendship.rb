@@ -4,6 +4,8 @@ class Friendship < ApplicationRecord
 
   before_update :complete_friendship
 
+  validates :user, uniqueness: { scope: :friend, message: 'you can\' have the same relationship multiple times' }
+
   private
 
   def complete_friendship

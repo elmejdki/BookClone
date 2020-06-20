@@ -26,8 +26,8 @@ class User < ApplicationRecord
   has_many :friends, through: :confirmed_friendships
 
   def friends_and_own_posts
-    users = friends << self
-    Post.where(user: users).order('created_at DESC')
+    users = friends
+    Post.where(user: users).or(Post.where(user: self)).order('created_at DESC')
   end
 
   def confirm_friend(friend)
