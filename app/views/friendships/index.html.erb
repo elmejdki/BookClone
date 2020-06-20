@@ -11,14 +11,18 @@
         <% current_user.friends.each do |friend| %>
           <div class="request">
             <div class="user-image">
-              <% if friend.avatar.attached? %>
-                <%= image_tag friend.avatar, class: 'profile-image' %>
-              <% else %>
-                <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+              <%= link_to user_path(friend) do %>
+                <% if friend.avatar.attached? %>
+                  <%= image_tag friend.avatar, class: 'profile-image' %>
+                <% else %>
+                  <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+                <% end %>
               <% end %>
             </div>
             <div class="user-info">
-              <span class="name"><%= friend.fullname %></span>
+              <%= link_to user_path(friend), class: 'has-text-black underline' do %>
+                <span class="name"><%= friend.fullname %></span>
+              <% end %>
               <div class="d-flex space-between">
                 <span class="d-flex flex-column">
                   <span class="username">@<%= friend.username %></span>
@@ -41,14 +45,18 @@
         <% current_user.pending_friends.each do |friend| %>
           <div class="request">
             <div class="user-image">
-              <% if friend.avatar.attached? %>
-                <%= image_tag friend.avatar, class: 'profile-image' %>
-              <% else %>
-                <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+              <%= link_to user_path(friend) do %>
+                <% if friend.avatar.attached? %>
+                  <%= image_tag friend.avatar, class: 'profile-image' %>
+                <% else %>
+                  <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+                <% end %>
               <% end %>
             </div>
             <div class="user-info">
-              <span class="name"><%= friend.fullname %></span>
+              <%= link_to user_path(friend), class: 'has-text-black underline' do %>
+                <span class="name"><%= friend.fullname %></span>
+              <% end %>
               <div class="d-flex space-between">
                 <span class="d-flex flex-column">
                   <span class="username">@<%= friend.username %></span>

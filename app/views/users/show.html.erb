@@ -6,7 +6,7 @@
       <% else %>
         <%= image_tag 'cover-pic', class: 'cover-image' %>
       <% end %>
-      <%#= link_to 'Change Cover Picture', new_cover_path, class: 'image-link' %>
+      <%#= link_to 'Change Picture', new_cover_path, class: 'image-link' %>
     </div>
     <div class="profile-container">
       <div class="avatar">
@@ -15,7 +15,9 @@
         <% else %>
           <%= image_tag 'male_profile_pic', class: 'profile-image' %>
         <% end %>
-        <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+        <% if current_user == @user %>
+          <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+        <% end %>
       </div>
       <div class="user-info">
         <div class="name"><%= @user.fullname %></div>
@@ -45,6 +47,9 @@
       <% end %>
 
       <div class="posts-container">
+        <% if @user.posts.empty? %>
+          <p class="note">There is no posts, availble here.</p>
+        <% end %>
         <% @user.posts.each do |post| %>
           <div class="box">
             <div class="poster-identifier">

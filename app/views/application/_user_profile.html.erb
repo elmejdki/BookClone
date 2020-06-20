@@ -1,10 +1,13 @@
 <% if user_signed_in? %>
   <div class="profile-container">
     <div class="avatar">
+    <%= link_to user_path(current_user) do %>
       <% if current_user.avatar.attached?  %>
         <%= image_tag current_user.avatar, class: 'profile-image' %>
+      <% else %>
+        <%= image_tag 'male_profile_pic', class: 'profile-image' %>
       <% end %>
-      <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+    <% end %>
     </div>
     <div class="username"><%= current_user.username %></div>
     <div class="bio"><i class="fas fa-user"></i><%= current_user.bio ? current_user.bio : 'Proin non elit nunc. Vivamus ut risus odio. Suspendisse nec urna nec metus placerat egestas. Suspendisse sit amet maximus est. Integer at tellus justo. Pellentesque et luctus lectus. Nullam tempor vel est sollicitudin posuere. In lorem elit, tincidunt nec posuere in, condimentum volutpat magna.' %></div>
