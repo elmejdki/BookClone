@@ -16,8 +16,16 @@
 
 @import "bulma";
 
+body {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
+
 $base-color: rgba(0, 119, 255, 0.836);
 $off-black: rgba(90, 90, 90, 0.555);
+$clear-grey: rgba(231, 231, 231, 0.432);
 
 .has-text-base {
   color: $base-color;
@@ -135,7 +143,7 @@ header {
 }
 
 body {
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .notification {
@@ -149,7 +157,7 @@ body {
   object-fit: cover;
 }
 
-.is-one-fifth {
+.mt {
   margin-top: 70px;
 }
 
@@ -262,7 +270,6 @@ body {
 .main-container {
   display: flex;
   justify-content: center;
-  margin: 0 20px;
 
   .column-style {
     max-width: 1200px;
@@ -616,5 +623,151 @@ body {
     height: 100px;
     width: 100px;
     margin: 10px;
+  }
+}
+
+.rooms-page {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 40px);
+
+  .message-notification {
+    padding: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    color: $off-black;
+  }
+  
+  .rooms-shower {
+    flex-shrink: 0;
+    width: 350px;
+    height: 100%;
+    border-right: 1px solid $clear-grey;
+    overflow-y: scroll;
+
+    .room-linker {
+      display: flex;
+      height: 100px;
+      margin: 10px;
+      border-radius: 40px;
+      
+      &:hover {
+        background-color: $clear-grey;
+      }
+
+      .user-image {
+        width: 80px;
+        height: 80px;
+        margin: 10px 10px;
+      }
+
+      .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 20px;
+
+        .name {
+          font-size: 25px;
+          color: $base-color;
+
+          &:hover{
+            color: $base-color;
+          }
+        }
+
+        .username {
+          font-weight: bold;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .messages-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+
+    .messages-header {
+      display: flex;
+      padding: 10px 20px;
+      border-bottom: 1px solid $clear-grey;
+      width: 100%;
+
+      .user-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;;
+      }
+
+      .user-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .name {
+          color: $base-color;
+          font-size: 20px;
+        }
+
+        span {
+          font-size: 15px;
+          color: $off-black;
+        }
+      }
+    }
+
+    .messages-body {
+      flex-grow: 1;
+      flex-shrink: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+
+      .wrapper {
+        margin-bottom: 5px;
+        width: fit-content;
+        
+        .message {
+          width: fit-content;
+          margin: 5px;
+          background-color: $clear-grey;
+          border-radius: 30px;
+          padding: 10px 20px;
+          font-size: 16px;
+        }
+
+        .date {
+          color: $off-black;
+          font-size: 13px;
+          margin: 0 30px;
+        }
+      }
+
+      .me {
+        align-self: flex-end;
+
+        .message {
+          background-color: $base-color;
+          color: white;
+        }
+      }
+    }
+
+    .chat-box {
+      form {
+        display: flex;
+        padding: 0 20px;
+
+        .field {
+          flex-grow: 1;
+        }
+      }
+    }
   }
 }

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   post '/confirm_friend/', to: 'friendships#confirm'
   get '/friend_requests', to: 'users#new_friends', as: :friend_requests
-  
+
+  post '/send_message', to: 'rooms#intialize_room', as: :intialize_room
+
   devise_for :users
   resources :users, only: [:index, :show] 
   resources :posts do
@@ -17,4 +19,6 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :friendships, only: [:index, :create, :destroy, :update]
+  resources :rooms, only: [:show, :index]
+  resources :messages, only: [:create]
 end

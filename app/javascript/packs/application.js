@@ -15,3 +15,37 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+document.addEventListener('turbolinks:load', () => {
+  const post_dropdowns = document.getElementsByClassName('dropdown-trigger');
+  const dropdowns = document.getElementsByClassName('dropdown');
+
+  const toggleMenu = (e) => {
+    e.target.parentElement.parentElement.parentElement.classList.toggle('is-active');
+    e.stopPropagation()
+  }
+
+  const hideMenu = (e) => {
+    if(e.target.className.includes('post-action-container')) {
+    }else {    
+      Array.prototype.slice.call(dropdowns).forEach(item => {
+          item.classList.remove('is-active');
+      })
+    }
+  }
+
+  Array.prototype.slice.call(post_dropdowns).forEach(item => {
+    console.log(item)
+    item.addEventListener('click', toggleMenu);
+  });
+
+  document.addEventListener('click', hideMenu);
+
+  const notificaton_btn = document.getElementById('delete')
+
+  notificaton_btn.addEventListener('click', (e) => {
+    e.target.parentElement.style.display = 'none'
+  })
+
+  document.querySelector(".messages-body").scrollTo(0,
+    document.querySelector(".messages-body").scrollHeight);
+})

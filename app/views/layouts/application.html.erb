@@ -29,13 +29,6 @@
             <p class="has-text-white" ><%= alert %></p>
         </div>
       <% end %>
-      <script>
-        const notificaton_btn = document.getElementById('delete')
-
-        notificaton_btn.addEventListener('click', (e) => {
-          e.target.parentElement.style.display = 'none'
-        })
-      </script>
 
       <nav class="nav-bar">
         <div class="nav-bar-content">
@@ -68,9 +61,7 @@
     </header>
 
     <main class="main-container">
-      <div class="columns is-centered column-style">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
   </body>
 </html>

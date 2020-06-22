@@ -25,6 +25,9 @@ class User < ApplicationRecord
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
 
+  has_many :messages, dependent: :destroy
+  has_many :rooms, through: :messages
+
   def friends_and_own_posts
     users = friends
     Post.where(user: users).or(Post.where(user: self)).order('created_at DESC')

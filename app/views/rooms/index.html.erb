@@ -1,0 +1,51 @@
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+
+<div class="rooms-page">
+  <div class="rooms-shower">
+    <% @rooms.each do |room| %>
+      <% user = room.side_user(current_user) %>
+      <%= link_to room do%>
+        <div class="room-linker">
+          <div class="user-image">
+            <%= image_tag user.avatar, class: 'profile-image'%>
+          </div>
+          <div class="body">
+            <span class="name"><%= user.fullname %></span>
+            <span class="username">@<%= user.username %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %> 
+  </div>
+  <div class="messages-container">
+    <% if @room.present? %>
+      <div class="messages-header">
+        <div class="user-image">
+          <%= image_tag current_user.avatar, class: 'profile-image' %>
+        </div>
+        <div class="user-name">
+          <div class="name"><%= current_user.fullname %></div>
+          <span>Active 30m ago</span>
+        </div>
+      </div>
+      <div class="messages-body">
+        <% @room.messages.each do |msg| %>
+          <div class="wrapper <%= 'me' if current_user == msg.user %>">
+            <div class="message">
+              <%= msg.body %>
+            </div>
+            <div class="date">
+              <%= time_ago_in_words(msg.created_at) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="chat-box">
+        <%= render 'messages/form', message: Message.new, room: @room %>
+      </div>
+    <% else %>
+      <span class="message-notification">Please click on a room, to start a discussing, otherwise if the left side bar is empty go to a user profile that you want to talk to, and say 'hello'</span>
+    <% end %>
+  </div>
+</div>

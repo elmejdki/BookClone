@@ -172,31 +172,6 @@
             <% end %>
           </div>
         <% end %>
-        <script>
-          const post_dropdowns = document.getElementsByClassName('dropdown-trigger');
-          const dropdowns = document.getElementsByClassName('dropdown');
-
-          const toggleMenu = (e) => {
-            e.target.parentElement.parentElement.parentElement.classList.toggle('is-active');
-            e.stopPropagation()
-          }
-
-          const hideMenu = (e) => {
-            if(e.target.className.includes('post-action-container')) {
-            }else {    
-              Array.prototype.slice.call(dropdowns).forEach(item => {
-                  item.classList.remove('is-active');
-              })
-            }
-          }
-
-          Array.prototype.slice.call(post_dropdowns).forEach(item => {
-            console.log(item)
-            item.addEventListener('click', toggleMenu);
-          });
-
-          document.addEventListener('click', hideMenu);
-        </script>
       </div>
     </div>
   </div>
