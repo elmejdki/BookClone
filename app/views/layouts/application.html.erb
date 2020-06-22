@@ -18,14 +18,12 @@
         <div class="has-background-primary notification">
           <button id="delete" class="delete"></button>
             <p class="has-text-white" ><%= notice %></p>
-            <p class="has-text-white" ><%= alert %></p>
         </div>
       <% end %>
 
       <% if alert %>
-        <div class="has-background-primary notification">
+        <div class="has-background-danger notification">
           <button id="delete" class="delete"></button>
-            <p class="has-text-white" ><%= notice %></p>
             <p class="has-text-white" ><%= alert %></p>
         </div>
       <% end %>
