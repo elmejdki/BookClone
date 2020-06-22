@@ -6,7 +6,7 @@
     <% @rooms.each do |room| %>
       <% user = room.side_user(current_user) %>
       <%= link_to room do%>
-        <div class="room-linker">
+        <div class="room-linker <%= 'active' if room == @room %>">
           <div class="user-image">
             <%= image_tag user.avatar, class: 'profile-image'%>
           </div>
@@ -29,7 +29,7 @@
           <span>Active 30m ago</span>
         </div>
       </div>
-      <div class="messages-body">
+      <div id="messages" class="messages-body">
         <% @room.messages.each do |msg| %>
           <div class="wrapper <%= 'me' if current_user == msg.user %>">
             <div class="message">

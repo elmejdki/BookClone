@@ -638,7 +638,7 @@ body {
     justify-content: center;
     text-align: center;
     height: 100%;
-    color: $off-black;
+    color: $off-black ;
   }
   
   .rooms-shower {
@@ -682,6 +682,28 @@ body {
         .username {
           font-weight: bold;
           font-size: 12px;
+        }
+      }
+    }
+
+    .active {
+      background-color: $base-color;
+
+      &:hover {
+        background-color: $base-color;
+      }
+
+      .body {
+        .name {
+          color: white;
+
+          &:hover{
+            color: white;
+          }
+        }
+
+        .username {
+          color: whitesmoke;
         }
       }
     }
@@ -751,6 +773,9 @@ body {
 
       .me {
         align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
         .message {
           background-color: $base-color;

@@ -10,10 +10,10 @@ class RoomsController < ApplicationController
 
     if rooms.empty?
       room = Room.new
-      room.create
-  
-      Message.create(user_id: current_user.id, room_id: @room.id, body: '', unread_messages: 0)
-      Message.create(user_id: params[:id], room_id: @room.id, body: '', unread_messages: 0)
+      room.save
+
+      Message.create(user_id: current_user.id, room_id: room.id, body: 'Hi', unread_messages: 0)
+      Message.create(user_id: params[:id], room_id: room.id, body: 'Hi', unread_messages: 0)
     else
       room = rooms[0]
     end
