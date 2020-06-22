@@ -1,15 +1,27 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
+  <div id="error">
     <h2>
-      <%= I18n.t("errors.messages.not_saved",
+      <% error_explanation = I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
                  resource: resource.class.model_name.human.downcase)
        %>
+      <div class="has-background-danger notification">
+        <button id="delete_error" class="delete"></button>
+          <p class="has-text-white" ><%= error_explanation %></p>
+      </div>
     </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+    
+    
   </div>
 <% end %>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      $notification = $delete.parentNode;
+
+      $delete.addEventListener('click', () => {
+        $notification.parentNode.removeChild($notification);
+      });
+    });
+  });
+</script>

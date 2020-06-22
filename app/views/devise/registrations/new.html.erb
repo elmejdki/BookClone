@@ -6,11 +6,13 @@
   <div class="field">
     <%= f.label :fullname %><br />
     <%= f.input_field :fullname %>
+    <%= render  partial: "error_handler", locals: { source: :fullname } %>
   </div>
 
   <div class="field">
     <%= f.label :username %><br />
     <%= f.input_field :username %>
+    <%= render partial: "error_handler", locals: { source: :username } %>
   </div>
 
   <div class="field">
@@ -25,26 +27,31 @@
 
   <div class="field">
     <%= f.input :gender, as: :radio_buttons, collection: [['female', 'female'], ['male', 'male']], checked: ['male', 'male'] %>
+    <%= render partial: "error_handler", locals: { source: :gender } %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
+    <%= render  partial: "error_handler", locals: { source: :email } %>
   </div>
 
   <div class="field">
     <%= f.label :profession %><br />
     <%= f.input_field :profession %>
+    <%= render  partial: "error_handler", locals: { source: :profession } %>
   </div>
 
   <div class="field">
     <%= f.label :city %><br />
     <%= f.input_field :city %>
+    <%= render  partial: "error_handler", locals: { source: :city} %>
   </div>
 
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
+    <%= render partial: "error_handler", locals: { source: :bio } %>
   </div>
 
   <div class="field">
@@ -53,11 +60,13 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= render  partial: "error_handler", locals: { source: :password } %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= render  partial: "error_handler", locals: { source: :password_confirmation } %>
   </div>
 
   <div class="actions">
