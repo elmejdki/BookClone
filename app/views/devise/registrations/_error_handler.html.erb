@@ -1,0 +1,5 @@
+<% if resource.errors[source].any? %>
+  <% resource.errors[source].each do |msg| %>
+    <p class="has-text-danger"><%= msg %></p>
+  <% end %>
+<% end %>
