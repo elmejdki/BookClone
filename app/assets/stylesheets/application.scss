@@ -400,7 +400,9 @@ body {
             height: 30px;
             background-color: white;
             border-radius: 2px;
-            
+            display: flex;
+            justify-content: center;
+
             .file-icon {
               margin: 0;
               color: $base-color;
@@ -408,6 +410,11 @@ body {
               .fa {
                 font-size: 25px;
               }
+            }
+
+            .file-name {
+              font-size: 15px;
+              border: none;
             }
           }
         }
