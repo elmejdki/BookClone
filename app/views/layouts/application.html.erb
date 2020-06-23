@@ -13,6 +13,8 @@
   </head>
 
   <body>
+    <div id="user-id" data-user-id="<%= current_user.id %>"></div>
+    <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
     <header>
       <% if notice %>
         <div class="has-background-primary notification">
@@ -41,7 +43,7 @@
           <!-- FIX: these links need to be changed -->
           <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
           <%= link_to 'New Members', users_path, class: 'nav-bar-item' %>
-          <%= link_to 'Messages', rooms_path, class: 'nav-bar-item' %>
+          <%= link_to 'Messages', rooms_path, class: 'nav-bar-item ' + add_class, id:'message_menu' %>
         </div>
         <div class="search-bar">
           <input type="text" class="input" placeholder="Search">

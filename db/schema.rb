@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_164851) do
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.text "body"
-    t.integer "unread_messages"
+    t.boolean "unread"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
