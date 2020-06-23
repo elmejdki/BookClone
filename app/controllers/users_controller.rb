@@ -48,4 +48,8 @@ class UsersController < ApplicationController
   def new_friends
     
   end
+
+  def edit
+    @user = current_user
+  end
 end

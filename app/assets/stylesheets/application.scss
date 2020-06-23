@@ -223,6 +223,15 @@ body {
       bottom: 0;
       left: inherit;
     }
+
+    .update-button {
+      width: 130px;
+      text-align: center;
+      position: absolute;
+      right: 40px;
+      bottom: 30px;
+      left: inherit;
+    }
   }
 
   .profile-container {
@@ -240,12 +249,14 @@ body {
       .name {
         color: white;
         font-size: 30px;
+        text-shadow: 1px 1px $base-color;
       }
       
       .username {
         color: white;
         font-size: 12px;
         position: absolute;
+        text-shadow: 1px 1px $base-color;
         top: 20px;
       }
     }

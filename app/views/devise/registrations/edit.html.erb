@@ -6,46 +6,37 @@
   <div class="field">
     <%= f.label :fullname %><br />
     <%= f.input_field :fullname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.input_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :avatar, label: '' %><br />
-    <%= f.file_field :avatar, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cover_picture %><br />
-    <%= f.file_field :cover_picture %>
+    <%= render partial: "error_handler", locals: { source: :fullname } %>
   </div>
 
   <div class="field">
     <%= f.label :gender %><br />
     <%= f.input :gender, as: :radio_buttons, collection: [['0', 'female'], ['1', 'male']], label_method: :second, value_method: :first %>
+    <%= render partial: "error_handler", locals: { source: :gender } %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
+    <%= render partial: "error_handler", locals: { source: :email } %>
   </div>
 
   <div class="field">
     <%= f.label :profession %><br />
     <%= f.input_field :profession %>
+    <%= render partial: "error_handler", locals: { source: :profession } %>
   </div>
 
   <div class="field">
     <%= f.label :city %><br />
     <%= f.input_field :city %>
+    <%= render partial: "error_handler", locals: { source: :city } %>
   </div>
 
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
+    <%= render partial: "error_handler", locals: { source: :bio } %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -55,6 +46,7 @@
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= render partial: "error_handler", locals: { source: :password } %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -64,11 +56,13 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= render partial: "error_handler", locals: { source: :password_confirmation } %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= render partial: "error_handler", locals: { source: :current_password } %>
   </div>
 
   <div class="actions">

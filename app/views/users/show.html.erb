@@ -7,6 +7,7 @@
         <%= image_tag 'cover-pic', class: 'cover-image' %>
       <% end %>
       <% if current_user == @user %>
+        <%= link_to 'Update info', edit_user_registration_path, class: 'image-link update-button' %>
         <%= link_to 'Change Cover', new_cover_path, class: 'image-link cover-button' %>
       <% end %>
     </div>
