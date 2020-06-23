@@ -25,6 +25,9 @@
         <div class="name"><%= @user.fullname %></div>
         <span class="username">@<%= @user.username %></span>
       </div>
+      <% if @user != current_user %>
+        <%= link_to 'Send Message', intialize_room_path(@user), class:'button is-small is-link' %>
+      <% end %>
     </div>
   </div>
   <div class="columns is-centered">

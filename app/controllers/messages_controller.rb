@@ -4,7 +4,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
-    redirect_to request.referrer
+    # redirect_to request.referrer
+
+    ActionCable.server.broadcast "room_channel_#{@message.room.id}",
+                                  message: @message,
+                                  user_name: @message.user.fullname
+
   end
 
   private

@@ -34,7 +34,6 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   Array.prototype.slice.call(post_dropdowns).forEach(item => {
-    console.log(item)
     item.addEventListener('click', toggleMenu);
   });
 
@@ -42,10 +41,15 @@ document.addEventListener('turbolinks:load', () => {
 
   const notificaton_btn = document.getElementById('delete')
 
-  notificaton_btn.addEventListener('click', (e) => {
-    e.target.parentElement.style.display = 'none'
-  })
+  if(notificaton_btn){
+    notificaton_btn.addEventListener('click', (e) => {
+      e.target.parentElement.style.display = 'none'
+    })
+  }
 
-  document.querySelector(".messages-body").scrollTo(0,
-    document.querySelector(".messages-body").scrollHeight);
+  const messages_body = document.querySelector(".messages-body");
+  if (messages_body){
+    messages_body.scrollTo(0,
+      document.querySelector(".messages-body").scrollHeight);
+  }
 })

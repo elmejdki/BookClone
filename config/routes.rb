@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/confirm_friend/', to: 'friendships#confirm'
   get '/friend_requests', to: 'users#new_friends', as: :friend_requests
 
-  post '/send_message', to: 'rooms#intialize_room', as: :intialize_room
+  get '/send_message/:id', to: 'rooms#intialize_room', as: :intialize_room
 
   devise_for :users
   resources :users, only: [:index, :show] 
