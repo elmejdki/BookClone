@@ -10,15 +10,18 @@
       <% else %>
         <% current_user.friend_requests.each do |friend| %>
           <div class="request">
-            <div class="user-image">
-              <% if friend.avatar.attached? %>
-                <%= image_tag friend.avatar, class: 'profile-image' %>
-              <% else %>
-                <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-              <% end %>
-            </div>
+            <%= link_to user_path(friend) do %>
+              <div class="user-image">
+                <% if friend.avatar.attached? %>
+                  <%= image_tag friend.avatar, class: 'profile-image' %>
+                <% else %>
+                  <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+                <% end %>
+              </div>
+            <% end %>
             <div class="user-info">
-              <span class="username"><%= friend.username %></span>
+              <span class="name"><%= friend.fullname %></span>
+              <span class="username">@<%= friend.username %></span>
               <div class="buttons">
                 <%= link_to "Accept", confirm_friend_path(friend_id: friend.id), method: :post,class: 'button is-small is-base' %>
                 <%= link_to "Decline", friendship_path(friend), method: :post, method: :delete, class: 'button is-small is-out-base' %>

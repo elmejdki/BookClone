@@ -25,9 +25,9 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update(avatar: params[:user][:avatar])
-      redirect_to root_path, notice: 'avatar was updated successfully.'
+      redirect_to user_path(current_user), notice: 'avatar was updated successfully.'
     else
-      redirect_to root_path, alert: 'avatar wasn\'t updated for some raison.'
+      redirect_to user_path(current_user), alert: 'avatar wasn\'t updated for some raison.'
     end
   end
   
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update(cover_picture: params[:user][:cover_picture])
-      redirect_to root_path, notice: 'cover image was updated successfully.'
+      redirect_to user_path(current_user), notice: 'cover image was updated successfully.'
     else
-      redirect_to root_path, alert: 'cover iamge wasn\'t updated for some raison.'
+      redirect_to user_path(current_user), alert: 'cover iamge wasn\'t updated for some raison.'
     end
   end
 

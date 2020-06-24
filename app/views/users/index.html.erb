@@ -7,25 +7,34 @@
     <% if @non_friends.empty? %>
       <p class="note">Great, you have made the impossible every one now is in your circle, be kind and see hi to every one of them</p>
     <% else %>
-      <% @non_friends.each do |friend| %>
-        <div class= "suggested-friend">
-          <div class="suggested-friend-image">
-            <% if friend.avatar.attached?  %>
-              <%= image_tag friend.avatar, class: "profile-image" %>  
-            <% else %>
-              <%#=  FIX: this should be fixed to select images based on gender %>
-              <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-            <% end %>
+      <div class="suggested-friends">
+        <% @non_friends.each do |friend| %>
+          <div class= "suggested-friend">
+            <div class="suggested-friend-image">
+              <%= link_to user_path(friend) do %>
+                <% if friend.avatar.attached?  %>
+                  <%= image_tag friend.avatar, class: "profile-image" %>  
+                <% else %>
+                  <% if friend.gender == 'male' %>
+                    <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
+                  <% else %>
+                    <%= image_tag('female_profile_pic.jpg', class: 'profile-image') %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="user-info">
+              <%= link_to user_path(friend), class: "name" do %>
+                <%= friend.fullname %>
+              <% end %>
+              <p class="username">@<%= friend.username %></p>
+              <p>
+                <%= link_to "Add Friend", friendships_path(user_id: current_user.id ,friend_id: friend.id), method: :post, class: 'button is-link is-small mt-2' %>
+              </p>
+            </div>
           </div>
-          <div class="user-info">
-            <p class="username"><%= friend.username %></p>
-            <p>Joined: <%= time_ago_in_words(friend.created_at) %></p>
-            <p>
-              <%= link_to "Add Friend", friendships_path(user_id: current_user.id ,friend_id: friend.id), method: :post %>
-            </p>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="column is-one-fifth mt has-text-centered padding-rigth">

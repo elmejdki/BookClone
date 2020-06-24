@@ -259,8 +259,24 @@ body {
         top: 20px;
       }
     }
+
+    .friend-status {
+      position: absolute;
+      color: white;
+      bottom: -30px;
+      right: 50px;
+
+      span {
+        text-shadow: 2px 0px black;
+      }
+    }
   }
 }
+
+.mt-2 {
+  margin-top: 7px;
+}
+
 .image-link {
   position: absolute;
   padding: 1px 10px;
@@ -274,6 +290,64 @@ body {
   
   &:hover {
     color: black;  
+  }
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+
+  .username {
+    font-weight: bold;
+  }
+
+  .is-out-base {
+    color: $base-color;
+    border-color: $base-color;
+    
+    &:hover {
+      box-shadow: 1px 0px 10px -4px black;
+    }
+    
+    &:focus {
+      box-shadow: 1px 0px 10px 0px black;
+    }
+  }
+  
+  .is-base {
+    border: none;
+    background-color: $base-color;
+    color: white;
+  
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.friend-request-action {
+  .is-out-base {
+    color: $base-color;
+    border: none;
+    
+    &:hover {
+      box-shadow: 1px 0px 10px -4px black;
+    }
+    
+    &:focus {
+      box-shadow: 1px 0px 10px 0px black;
+    }
+  }
+  
+  .is-base {
+    border: none;
+    background-color: $base-color;
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -304,35 +378,6 @@ body {
         min-width: 60px;
         height: 60px;
         margin-right: 10px;
-      }
-
-      .user-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 70%;
-
-        .username {
-          font-weight: bold;
-        }
-
-        .is-out-base {
-          color: $base-color;
-          border-color: $base-color;
-
-          &:hover {
-            box-shadow: 1px 0px 10px -4px black;
-          }
-          
-          &:focus {
-            box-shadow: 1px 0px 10px 0px black;
-          }
-        }
-
-        .is-base {
-          background-color: $base-color;
-          color: white;
-        }
       }
     }
   }
@@ -628,19 +673,27 @@ body {
   width: 80px;
 }
 
-.suggested-friend {
-  height: 120px;
+.suggested-friends {
   display: flex;
-  margin: 0 10px 10px 20px;
-  border-radius: 6px;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-  color: #4a4a4a;
-  align-items: center;
-  
-  .suggested-friend-image {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .suggested-friend {
+    height: 120px;
+    display: flex;
+    margin: 0 10px 10px 20px;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: #4a4a4a;
+    align-items: center;
+    width: 310px;
+    
+    .suggested-friend-image {
+      height: 100px;
+      min-width: 100px;
+      max-width: 100px;
+      margin: 10px;
+    }
   }
 }
 

@@ -14,8 +14,13 @@ class RoomsController < ApplicationController
       room = Room.new
       room.save
 
+      Message.create(user_id: params[:id], room_id: room.id, body: 'nil', unread: false)
       Message.create(user_id: current_user.id, room_id: room.id, body: 'Hi', unread: true)
-      Message.create(user_id: params[:id], room_id: room.id, body: nil, unread: false)
+
+      ActionCable.server.broadcast "message_notification_channel",
+                                  notified_room: room,
+                                  user: current_user.id,
+                                  side_user: params[:id]
     else
       room = rooms[0]
     end
@@ -25,7 +30,7 @@ class RoomsController < ApplicationController
 
   def show
     @message_number = nil
-    
+
     Room.find(params[:id]).messages.each_with_index do |message, index|
       if message.user_id == Room.find(params[:id]).side_user(current_user).id && message.unread == true
         @message_number = index if @message_number.nil?
