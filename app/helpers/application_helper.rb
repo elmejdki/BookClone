@@ -1,6 +1,6 @@
 module ApplicationHelper
   def add_class
-    unless @dead_rooms && @dead_rooms.zero?
+    if !@dead_rooms.nil? && !@dead_rooms.zero?
       return 'message_notice'
     else
       return ''

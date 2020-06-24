@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :avatar, :cover_picture, :fullname, :bio, :city, :gender, :profession])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :avatar, :cover_picture, :fullname, :bio, :city, :gender, :profession])
   end
 
   def check_if_there_is_new_messages
