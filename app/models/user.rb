@@ -49,6 +49,14 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
+  def pending_friend?(user)
+    pending_friends.include?(user)
+  end
+
+  def new_friend?(user)
+    friend_requests.include?(user)
+  end
+  
   def last_friend_requests
     friend_requests.order(created_at: :desc).limit(4)
   end

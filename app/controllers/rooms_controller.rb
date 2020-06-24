@@ -14,8 +14,13 @@ class RoomsController < ApplicationController
       room = Room.new
       room.save
 
+      Message.create(user_id: params[:id], room_id: room.id, body: 'nil', unread: false)
       Message.create(user_id: current_user.id, room_id: room.id, body: 'Hi', unread: true)
-      Message.create(user_id: params[:id], room_id: room.id, body: nil, unread: false)
+
+      ActionCable.server.broadcast "message_notification_channel",
+                                  notified_room: room,
+                                  user: current_user.id,
+                                  side_user: params[:id]
     else
       room = rooms[0]
     end
