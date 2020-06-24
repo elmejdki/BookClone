@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
 
   def show
     @message_number = nil
-    
+
     Room.find(params[:id]).messages.each_with_index do |message, index|
       if message.user_id == Room.find(params[:id]).side_user(current_user).id && message.unread == true
         @message_number = index if @message_number.nil?
