@@ -71,4 +71,13 @@ document.addEventListener('turbolinks:load', () => {
   message_menu.addEventListener('click', (e) => {
     e.target.classList.remove('message_notice')
   });
+
+  const fileInput = document.querySelector('#image-upload-js input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#image-upload-js .file-name');
+      const icon = document.querySelector("#image-upload-js .file-icon").style.color = "#48c774";
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
 })

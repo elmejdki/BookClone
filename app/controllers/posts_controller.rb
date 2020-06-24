@@ -27,7 +27,6 @@ class PostsController < ApplicationController
       redirect_to root_path, alert: 'some dumb thing happened'
     end
   end
-
   
   def destroy
     if Post.find(params[:id]).destroy

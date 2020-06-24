@@ -1,16 +1,19 @@
-<div class="post-form">
+<div class="post-form edit-form">
   <%= simple_form_for @post do |f| %>
     <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
-    <div class="file has-name">
-      <label class="file-label">
-        <%= f.file_field :image, class: 'file-input' %>
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fa fa-image"></i>
+      <div id="image-upload-js" class="file has-name">
+        <label class="file-label">
+          <%= f.file_field :image, class: 'file-input' %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-image"></i>
+            </span>
+            <span class="file-name has-text-grey-light">
+              No file uploaded
+            </span>
           </span>
-        </span>
-      </label>
-    </div>
-    <%= f.button :submit, 'Update' ,class: 'button is-medium btn-base' %>
+        </label>
+      </div>
+      <%= f.button :submit, 'Edit Post' ,class: 'button is-medium btn-base' %>
   <% end %>
 </div>
