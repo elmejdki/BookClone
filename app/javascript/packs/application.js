@@ -52,4 +52,9 @@ document.addEventListener('turbolinks:load', () => {
     messages_body.scrollTo(0,
       document.querySelector(".messages-body").scrollHeight);
   }
+
+  const message_menu = document.getElementById('message_menu')
+  message_menu.addEventListener('click', (e) => {
+    e.target.classList.remove('message_notice')
+  });
 })

@@ -193,6 +193,16 @@ body {
   text-align: center;
 }
 
+.message_notice {
+  border-bottom: 3px solid rgb(255, 51, 0);
+}
+
+.red-hr {
+  margin: 10px 30px;
+  width: calc(100% - 60px);
+  border: 1px solid rgba(255, 108, 108, 0.541);
+}
+
 .text-small {
   font-size: 10px;
 }
@@ -649,10 +659,21 @@ body {
     overflow-y: scroll;
 
     .room-linker {
+      position: relative;
       display: flex;
       height: 100px;
       margin: 10px;
       border-radius: 40px;
+
+      .message-notice {
+        position: absolute;
+        right: 5px;
+        bottom: 40px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: $base-color;
+      }
       
       &:hover {
         background-color: $clear-grey;
