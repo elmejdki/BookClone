@@ -33,6 +33,20 @@ document.addEventListener('turbolinks:load', () => {
     }
   }
 
+  const reload_page = (e) => {
+    location.hash="num=" + parseInt(Math.random()*100)
+  }
+
+  window.addEventListener('hashchange', () => {
+    location.reload();
+    return false;
+  })
+
+  const rooms_links = document.getElementsByClassName('room-linker')
+  Array.prototype.slice.call(rooms_links).forEach(room_link => {
+    room_link.addEventListener('click', reload_page);
+  });
+
   Array.prototype.slice.call(post_dropdowns).forEach(item => {
     item.addEventListener('click', toggleMenu);
   });
