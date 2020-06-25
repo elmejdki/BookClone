@@ -796,3 +796,33 @@ body {
     }
   }
 }
+
+.review-container {
+  display: flex;
+  
+  .about-app {
+    width: 150px;
+    margin: 0 10px;
+
+    h3 {
+      padding: 0;
+      margin: 0 10px;
+    }
+  }
+  .review-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-end;
+    .new_review {
+      display: flex;
+      flex-direction: column;
+      
+      .button {
+        align-self: flex-end;
+        margin-top: 5px;
+      }
+    }
+
+  }
+}

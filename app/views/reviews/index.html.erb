@@ -1,18 +1,24 @@
 <div class="columns is-centered column-style">
   <div class="column is-one-fifth mt">
-    <%= render 'user_profile' %>
   </div>
-  <div class= "column is-three-fifths">
+  <div class= "column is-full">
     <div class="timeline-container">
       <h1 class="title is-2 has-text-base has-text-centered"> Reviews </h1>
-      <% if user_signed_in? %>
-        <div class="post-form">
-          <%= simple_form_for @review do |f| %>
-            <%= f.text_area :text, label: 'name', placeholder: 'How was your experience here?', class:"textarea post-area" %>
-            <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
-          <% end %>
+      <div class="review-container">
+        <div class="about-app">
+          <%= image_tag 'app-logo' %>
+          <h3 class="subtitle is-6 has-text-grey">bookclone</h3>
+          <h3 class="subtitle is-7 has-text-grey-light">Average rate: </h3>
         </div>
-      <% end %>
+        <% if user_signed_in? %>
+          <div class="review-form">
+            <%= simple_form_for @review do |f| %>
+              <%= f.text_area :text, label: 'name', placeholder: 'Please tell us about our app, to improve it.', class:"textarea post-area" %>
+              <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base' %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
       <div class="posts-container">
         <% @reviews.each do |review| %>
@@ -49,6 +55,5 @@
     </div>
   </div>
   <div class="column is-one-fifth mt has-text-centered padding-rigth">
-    <%= render 'side_bar' %>
   </div>
 </div>
