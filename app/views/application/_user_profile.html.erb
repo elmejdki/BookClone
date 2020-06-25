@@ -10,7 +10,6 @@
     <% end %>
     </div>
     <div class="username"><%= current_user.username %></div>
-    <div class="bio"><i class="fas fa-user"></i><%= current_user.bio ? current_user.bio : 'Proin non elit nunc. Vivamus ut risus odio. Suspendisse nec urna nec metus placerat egestas. Suspendisse sit amet maximus est. Integer at tellus justo. Pellentesque et luctus lectus. Nullam tempor vel est sollicitudin posuere. In lorem elit, tincidunt nec posuere in, condimentum volutpat magna.' %></div>
     <div class="profile_links">
       <%= link_to root_path,class: 'feeds' do %>
         <i class="fas fa-home"></i>
@@ -24,9 +23,10 @@
         <i class="fa fa-plus"></i>
         Friend Requests
       <% end %>
-      <%= link_to root_path,class: 'messages' do %>
+      <%= link_to rooms_path, class: 'messages' do %>
         <i class="fas fa-envelope"></i>
         Messages
+        <span class="<%= @unread_messages.zero? ? 'd-non' : '' %>" id="new-messages"><%= @unread_messages %></span>
       <% end %>
     </div>
   </div>

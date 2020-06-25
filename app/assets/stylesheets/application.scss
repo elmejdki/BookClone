@@ -26,6 +26,7 @@ body {
 $base-color: rgba(0, 119, 255, 0.836);
 $off-black: rgba(90, 90, 90, 0.555);
 $clear-grey: rgba(231, 231, 231, 0.432);
+$red-color: rgb(255, 51, 0);
 
 .has-text-base {
   color: $base-color;
@@ -194,7 +195,7 @@ body {
 }
 
 .message_notice {
-  border-bottom: 3px solid rgb(255, 51, 0);
+  border-bottom: 3px solid $red-color;
 }
 
 .red-hr {
@@ -209,6 +210,10 @@ body {
 
 .total-width {
   width: 100%
+}
+
+.profile-intro {
+  height: 100%;
 }
 
 .user-info-container {
@@ -226,7 +231,7 @@ body {
     }
 
     .cover-button {
-      width: 130px;
+      width: 155px;
       text-align: center;
       position: absolute;
       right: 40px;
@@ -405,6 +410,10 @@ body {
   }
 }
 
+.d-non {
+  display: none;
+}
+
 .post-form {
   form {
     display: flex;
@@ -506,6 +515,22 @@ body {
         border: 1px solid rgb(200, 200, 200);
         color: $base-color;
         border-radius: 20px;
+      }
+
+      .messages {
+        position: relative;
+
+        span {
+          position: absolute;
+          right: 20px;
+          bottom: 9px;
+          background-color: #ff3300;
+          color: white;
+          padding: 2px 5px;
+          font-size: 10px;
+          font-weight: bold;
+          border-radius: 5px;
+        }
       }
     }
   }

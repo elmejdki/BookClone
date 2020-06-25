@@ -52,24 +52,36 @@
   </div>
   <div class="columns is-centered">
     <div class="timeline-container column is-four-fifths">
-      <% if user_signed_in? && @user == current_user %>
-        <div class="post-form">
-          <%= simple_form_for @post do |f| %>
-            <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
-            <div class="file has-name">
-              <label class="file-label">
-                <%= f.file_field :image, class: 'file-input' %>
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fa fa-image"></i>
-                  </span>
-                </span>
-              </label>
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <div class="box profile-intro">
+            <h1 class="title is-2"><i class="fas fa-globe-americas"></i> Intro</h1>
+            <p><i class="fas fa-briefcase"></i> <%= @user.profession %></p>
+            <p><i class="fas fa-map-marker-alt"></i> From, <a href="https://www.google.com/search?q=<%= @user.city %>" target='_blank'><%= @user.city %></a></p>
+            <p><i class="fas fa-book"></i> <%= @user.bio %></p>
+          </div>
+        </div>
+        <div class="column is-three-fifths">
+          <% if user_signed_in? && @user == current_user %>
+            <div class="post-form">
+              <%= simple_form_for @post do |f| %>
+                <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
+                <div class="file has-name">
+                  <label class="file-label">
+                    <%= f.file_field :image, class: 'file-input' %>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-image"></i>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
+              <% end %>
             </div>
-            <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
           <% end %>
         </div>
-      <% end %>
+      </div>
 
       <div class="posts-container">
         <% if @posts.empty? %>

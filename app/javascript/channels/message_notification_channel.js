@@ -39,5 +39,11 @@ consumer.subscriptions.create("MessageNotificationChannel", {
       }
     }
 
+    const messages_countner = document.getElementById('new-messages');
+    if(messages_countner) {
+      messages_countner.classList.remove('d-non');
+      messages_countner.innerText = data.dead_rooms;
+    }
+
   }
 });
