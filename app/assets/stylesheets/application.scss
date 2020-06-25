@@ -314,15 +314,15 @@ body {
       box-shadow: 1px 0px 10px 0px black;
     }
   }
-  
-  .is-base {
-    border: none;
-    background-color: $base-color;
+}
+
+.is-base {
+  border: none;
+  background-color: $base-color;
+  color: white;
+
+  &:hover {
     color: white;
-  
-    &:hover {
-      color: white;
-    }
   }
 }
 
@@ -881,5 +881,22 @@ body {
         }
       }
     }
+  }
+}
+
+.page-wrapper {
+  background-image: url(https://source.unsplash.com/random/1650x900);
+  height: calc(100vh - 40px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+
+  .form-container {
+    background-color: rgba(255, 255, 255, 0.65);
+    max-width: 290px;
+    float: right;
+    margin: 30px;
+    padding: 20px;
   }
 }

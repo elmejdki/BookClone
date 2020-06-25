@@ -40,15 +40,18 @@
               BookClone
             </span>
           </a>
-          <!-- FIX: these links need to be changed -->
-          <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
-          <%= link_to 'New Members', users_path, class: 'nav-bar-item' %>
-          <%= link_to 'Messages', rooms_path, class: 'nav-bar-item ' + add_class, id:'message_menu' %>
+          <% if user_signed_in? %>
+            <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
+            <%= link_to 'New Members', users_path, class: 'nav-bar-item' %>
+            <%= link_to 'Messages', rooms_path, class: 'nav-bar-item ' + add_class, id:'message_menu' %>
+          <% end %>
         </div>
-        <div class="search-bar">
-          <input type="text" class="input" placeholder="Search">
-          <i class="fa fa-search"></i>
-        </div>
+        <% if user_signed_in? %>
+          <div class="search-bar">
+            <input type="text" class="input" placeholder="Search">
+            <i class="fa fa-search"></i>
+          </div>
+        <% end %>
         <div>
           <% if user_signed_in? %>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
