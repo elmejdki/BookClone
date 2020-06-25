@@ -809,28 +809,18 @@ body {
       margin: 0 10px;
     }
   }
+
   .review-form {
     width: 100%;
     display: flex;
     flex-direction: column;
-    // justify-content: flex-end;
-    // .new_review {
-    //   display: flex;
-    //   flex-direction: column;
-      
-    //   .button {
-    //     align-self: flex-end;
-    //     margin-top: 5px;
-    //   }
-    // }
-
   }
 }
 
 .rating {
   display: flex;
   transform: rotateY(180deg);
-
+  padding: 5px 5px;
   input {
     display: none;
   }
@@ -838,13 +828,13 @@ body {
   label {
     display: block;
     position: relative;
-    width: 20px;
+    padding: 0 3px;
+    font-size: 30px;
     
     &:before {
       font-family: "fontAwesome";
       content: '\f005';
       display: block;
-      font-size: 20px;
       color: lightgrey;
       text-shadow: 0 1px rgba(0,0,0,0.5) ;
     }
@@ -856,7 +846,6 @@ body {
       position: absolute;
       top: 0;
       z-index: 1;
-      font-size: 20px;
       color: yellow;
       opacity: 0;
       transition: .5s;
@@ -877,4 +866,12 @@ body {
 .rating-button {
   display: flex;
   justify-content: space-between;
+}
+
+.review-quote {
+  display: flex;
+
+  .post-text {
+    padding: 5px 15px !important;
+  }
 }
