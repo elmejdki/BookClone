@@ -66,6 +66,9 @@
             <div class="post-text">
               <%= review.text %>
             </div>
+          <% if review.user == current_user %>
+            <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
+          <% end %>
           </div>
         <% end %>
       </div>
