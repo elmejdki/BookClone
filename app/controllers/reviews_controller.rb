@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    @reviews = Review.all.order('created_at DESC')
     @review = Review.new
   end
 
@@ -8,9 +8,9 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build(review_params)
 
     if @review.save
-      redirect_to root_path, notice: 'review created successfully'
+      redirect_to reviews_path, notice: 'review created successfully'
     else
-      redirect_to root_path, alert: 'review was not created, for some raison'
+      redirect_to reviews_path, alert: 'review was not created, for some raison'
     end
   end
 

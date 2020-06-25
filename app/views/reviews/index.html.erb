@@ -4,6 +4,9 @@
   <div class= "column is-full">
     <div class="timeline-container">
       <h1 class="title is-2 has-text-base has-text-centered"> Reviews </h1>
+      <div class='starrr'>
+      La pura
+      </div>
       <div class="review-container">
         <div class="about-app">
           <%= image_tag 'app-logo' %>
@@ -14,6 +17,7 @@
           <div class="review-form">
             <%= simple_form_for @review do |f| %>
               <%= f.text_area :text, label: 'name', placeholder: 'Please tell us about our app, to improve it.', class:"textarea post-area" %>
+              
               <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base' %>
             <% end %>
           </div>
@@ -57,3 +61,27 @@
   <div class="column is-one-fifth mt has-text-centered padding-rigth">
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="dist/starrr.js"></script>
+<script>
+    $('#star1').starrr({
+      change: function(e, value){
+        if (value) {
+          $('.your-choice-was').show();
+          $('.choice').text(value);
+        } else {
+          $('.your-choice-was').hide();
+        }
+      }
+    });
+
+    var $s2input = $('#star2_input');
+    $('#star2').starrr({
+      max: 10,
+      rating: $s2input.val(),
+      change: function(e, value){
+        $s2input.val(value).trigger('input');
+      }
+    });
+  </script>
