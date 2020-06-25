@@ -41,9 +41,9 @@
             </span>
           </a>
           <% if user_signed_in? %>
-            <%= link_to 'TimeLine', root_path, class: 'nav-bar-item' %>
-            <%= link_to 'New Members', users_path, class: 'nav-bar-item' %>
-            <%= link_to 'Messages', rooms_path, class: 'nav-bar-item ' + add_class, id:'message_menu' %>
+            <%= link_to 'TimeLine', root_path, class: 'nav-bar-item shrink-non' %>
+            <%= link_to 'New Members', users_path, class: 'nav-bar-item shrink-non' %>
+            <%= link_to 'Messages', rooms_path, class: 'nav-bar-item shrink-non' + add_class, id:'message_menu' %>
           <% end %>
         </div>
         <% if user_signed_in? %>
@@ -52,7 +52,7 @@
             <i class="fa fa-search"></i>
           </div>
         <% end %>
-        <div>
+        <div class="shrink-non">
           <% if user_signed_in? %>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           <% else %>

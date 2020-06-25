@@ -1,11 +1,13 @@
 <% if user_signed_in? %>
   <div class="profile-container">
-    <div class="avatar">
-    <%= link_to user_path(current_user) do %>
-      <%= render partial: 'user_image', locals: { user: current_user } %>
-    <% end %>
+    <div class="text-center">
+      <div class="avatar">
+        <%= link_to user_path(current_user) do %>
+          <%= render partial: 'user_image', locals: { user: current_user } %>
+        <% end %>
+      </div>
+      <div class="username"><%= current_user.username %></div>
     </div>
-    <div class="username"><%= current_user.username %></div>
     <div class="profile_links">
       <%= link_to root_path,class: 'feeds' do %>
         <i class="fas fa-home"></i>
@@ -15,7 +17,7 @@
         <i class="fas fa-user-friends"></i>
         Friends
       <% end %>
-      <%= link_to friend_requests_path,class: 'messages' do %>
+      <%= link_to friend_requests_path,class: '' do %>
         <i class="fa fa-plus"></i>
         Friend Requests
       <% end %>

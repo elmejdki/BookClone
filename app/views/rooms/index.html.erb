@@ -22,10 +22,10 @@
     <% if @room.present? %>
       <div class="messages-header">
         <div class="user-image">
-          <%= render partial: 'user_image', locals: { user: current_user } %>
+          <%= render partial: 'user_image', locals: { user: @room.side_user(current_user) } %>
         </div>
         <div class="user-name">
-          <div class="name"><%= current_user.fullname %></div>
+          <div class="name"><%= @room.side_user(current_user).fullname %></div>
           <span>Active 30m ago</span>
         </div>
       </div>
