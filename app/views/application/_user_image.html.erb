@@ -1,0 +1,9 @@
+<% if user.avatar.attached? %>
+  <%= image_tag user.avatar, class: 'profile-image'%>
+<% else %>
+  <% if user.gender == 'female' %>
+    <%= image_tag 'female_profile_pic', class: 'profile-image' %>
+  <% else %>
+    <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+  <% end %>
+<% end %>
