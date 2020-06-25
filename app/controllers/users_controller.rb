@@ -17,10 +17,6 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
-  def new_avatar
-    @user = current_user
-  end
-
   def update_avatar
     @user = current_user
 
@@ -29,10 +25,6 @@ class UsersController < ApplicationController
     else
       redirect_to user_path(current_user), alert: 'avatar wasn\'t updated for some raison.'
     end
-  end
-  
-  def new_cover
-    @user = current_user
   end
   
   def update_cover

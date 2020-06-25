@@ -1,3 +1,65 @@
+<div id="avatar-modal" class="modal">
+  <div id="avatar-modal-background" class="modal-background"></div>
+  <div class="modal-content avatar-edit-form">
+    <h1 class="title is-3">Update Avatar</h1>
+
+    <%= simple_form_for @user, url: update_avatar_path do |f| %>
+      <div class="update-image">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, class: 'profile-image'%>
+        <% else %>
+          <%= image_tag 'male_profile_pic', class: 'profile-image' %>
+        <% end %>
+      </div>
+      <div id="image-upload-js-3" class="file has-name">
+        <label class="file-label">
+          <%= f.file_field :avatar, class: 'file-input' %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-image"></i>
+            </span>
+            <span class="file-name has-text-grey-light">
+              select new avatar
+            </span>
+          </span>
+        </label>
+      </div>
+      <%= f.button :submit, 'Update avatar', class: 'button is-base' %>
+    <% end %>
+  </div>
+  <button id="avatar-modal-close" class="modal-close is-large" aria-label="close"></button>
+</div>
+<div id="cover-modal" class="modal">
+  <div id="cover-modal-background" class="modal-background"></div>
+  <div class="modal-content cover-edit-form">
+    <h1 class="title is-3">Update Cover Picture</h1>
+
+    <%= simple_form_for @user, url: update_cover_path do |f| %>
+      <div class="cover-picture">
+        <% if @user.cover_picture.attached?  %>
+          <%= image_tag @user.cover_picture, class: 'cover-image' %>
+        <% else %>
+          <%= image_tag 'cover-pic', class: 'cover-image' %>
+        <% end %>
+      </div>
+      <div id="image-upload-js-4" class="file has-name">
+        <label class="file-label">
+          <%= f.file_field :cover_picture, class: 'file-input' %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-image"></i>
+            </span>
+            <span class="file-name has-text-grey-light">
+              select new cover
+            </span>
+          </span>
+        </label>
+      </div>
+      <%= f.button :submit, 'Update avatar', class: 'button is-base' %>
+    <% end %>
+  </div>
+  <button id="cover-modal-close" class="modal-close is-large" aria-label="close"></button>
+</div>
 <div class= "column is-four-fifths">
   <div class='user-info-container'>
     <div class="cover-picture">
@@ -7,7 +69,7 @@
         <%= image_tag 'cover-pic', class: 'cover-image' %>
       <% end %>
       <% if current_user == @user %>
-        <%= link_to 'Change Cover', new_cover_path, class: 'image-link cover-button' %>
+        <span id='show-cover-modal' class="image-link cover-button">Change Cover</span>
       <% end %>
     </div>
     <div class="profile-container">
@@ -18,7 +80,7 @@
           <%= image_tag 'male_profile_pic', class: 'profile-image' %>
         <% end %>
         <% if current_user == @user %>
-          <%= link_to 'Edit', new_avatar_path, class: 'image-link' %>
+          <span id='show-avatar-modal' class="image-link">Edit</span>
         <% end %>
       </div>
       <div class="user-info">
