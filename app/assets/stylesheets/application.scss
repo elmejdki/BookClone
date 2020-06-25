@@ -866,12 +866,15 @@ body {
 .rating-button {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .review-quote {
   display: flex;
+  justify-content: space-between;
 
   .post-text {
+    width: 60%;
     padding: 5px 15px !important;
   }
 }
