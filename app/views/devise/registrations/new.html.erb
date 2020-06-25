@@ -77,7 +77,7 @@
           </div>
           <div class="field">
             <p class="control is-expanded has-icons-left">
-              <div id="image-upload-js" class="file has-name">
+              <div id="image-upload-js-2" class="file has-name">
                 <label class="file-label">
                   <%= f.file_field :cover_picture, class: 'file-input' %>
                   <span class="file-cta">
@@ -95,8 +95,6 @@
         </div>
       </div>
 
-      <div class="field">
-      </div>
       <div class="field is-horizontal">
         <div class="field-body">
           <div class="field">
@@ -138,4 +136,23 @@
 
     <%= render "devise/shared/links" %>
   </div>
+  <script>
+    const fileInput = document.querySelector('#image-upload-js input[type=file]');
+    fileInput.onchange = () => {
+      if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#image-upload-js .file-name');
+        const icon = document.querySelector("#image-upload-js .file-icon").style.color = "#48c774";
+        fileName.textContent = fileInput.files[0].name;
+      }
+    }
+
+    const fileInput_2 = document.querySelector('#image-upload-js-2 input[type=file]');
+    fileInput_2.onchange = () => {
+      if (fileInput_2.files.length > 0) {
+        const fileName = document.querySelector('#image-upload-js-2 .file-name');
+        const icon = document.querySelector("#image-upload-js-2 .file-icon").style.color = "#48c774";
+        fileName.textContent = fileInput_2.files[0].name;
+      }
+    }
+  </script>
 </div>
