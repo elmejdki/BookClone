@@ -10,9 +10,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to root_path, notice: 'post created successfully'
+      redirect_to request.referrer, notice: 'post created successfully'
     else
-      redirect_to root_path, alert: 'post was not created, for some raison'
+      redirect_to request.referrer, alert: 'post was not created, for some raison'
     end
   end
 
@@ -22,17 +22,17 @@ class PostsController < ApplicationController
 
   def update
     if Post.find(params[:id]).update(post_params)
-      redirect_to root_path, notice: 'post updated'
+      redirect_to request.referrer, notice: 'post updated'
     else
-      redirect_to root_path, alert: 'some dumb thing happened'
+      redirect_to request.referrer, alert: 'some dumb thing happened'
     end
   end
   
   def destroy
     if Post.find(params[:id]).destroy
-      redirect_to root_path, notice: 'post deleted'
+      redirect_to request.referrer, notice: 'post deleted'
     else
-      redirect_to root_path, alert: 'some dumb thing happened'
+      redirect_to request.referrer, alert: 'some dumb thing happened'
     end
   end
 

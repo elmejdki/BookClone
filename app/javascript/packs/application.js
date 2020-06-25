@@ -73,11 +73,13 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   const fileInput = document.querySelector('#image-upload-js input[type=file]');
-  fileInput.onchange = () => {
-    if (fileInput.files.length > 0) {
-      const fileName = document.querySelector('#image-upload-js .file-name');
-      const icon = document.querySelector("#image-upload-js .file-icon").style.color = "#48c774";
-      fileName.textContent = fileInput.files[0].name;
+  if(fileInput) {
+    fileInput.onchange = () => {
+      if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#image-upload-js .file-name');
+        const icon = document.querySelector("#image-upload-js .file-icon").style.color = "#48c774";
+        fileName.textContent = fileInput.files[0].name;
+      }
     }
   }
 })

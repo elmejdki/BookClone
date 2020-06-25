@@ -9,17 +9,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :avatar, :cover_picture, :fullname, :bio, :city, :gender, :profession])
   end
 
-  def check_if_there_is_new_messages
-    @dead_rooms = 0
+  def check_if_there_is_new_messages(user = current_user)
+    @unread_messages = 0
 
-    if current_user
-      rooms = current_user.rooms.uniq
+    if user
+      rooms = user.rooms.uniq
       rooms.each do |room|
-        message = room.messages.last
-        if message.user_id != current_user.id && message.unread
-          @dead_rooms += 1
-        end
+        @unread_messages += room.messages.where('unread = true and user_id != ?', user.id).count
       end
-    end 
+    end
+
+    @unread_messages
   end
 end
