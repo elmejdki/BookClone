@@ -68,7 +68,7 @@
         <span id='show-cover-modal' class="image-link cover-button">Change Cover</span>
       <% end %>
     </div>
-    <div class="profile-container">
+    <div class="profile-show-container">
       <div class="avatar">
         <%= render partial: 'user_image', locals: { user: @user } %>
         <% if current_user == @user %>
@@ -107,7 +107,7 @@
   <div class="columns is-centered">
     <div class="timeline-container column is-four-fifths">
       <div class="columns">
-        <div class="column is-two-fifths">
+        <div class="column <%= 'is-two-fifths' if @user == current_user %>">
           <div class="box profile-intro">
             <h1 class="title is-2"><i class="fas fa-globe-americas"></i> Intro</h1>
             <p><i class="fas fa-briefcase"></i> <%= @user.profession %></p>
@@ -115,8 +115,8 @@
             <p><i class="fas fa-book"></i> <%= @user.bio %></p>
           </div>
         </div>
-        <div class="column is-three-fifths">
-          <% if user_signed_in? && @user == current_user %>
+        <% if user_signed_in? && @user == current_user %>
+          <div class="column is-three-fifths">
             <div class="post-form">
               <%= simple_form_for @post do |f| %>
                 <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
@@ -133,8 +133,8 @@
                 <%= f.button :submit, 'Post' ,class: 'button is-medium btn-base' %>
               <% end %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
       <div class="posts-container">
