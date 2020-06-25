@@ -5,11 +5,7 @@
 
     <%= simple_form_for @user, url: update_avatar_path do |f| %>
       <div class="update-image">
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, class: 'profile-image'%>
-        <% else %>
-          <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-        <% end %>
+        <%= render partial: 'user_image', locals: { user: current_user } %>
       </div>
       <div id="image-upload-js-3" class="file has-name">
         <label class="file-label">
@@ -74,11 +70,7 @@
     </div>
     <div class="profile-container">
       <div class="avatar">
-        <% if @user.avatar.attached?  %>
-          <%= image_tag @user.avatar, class: 'profile-image' %>
-        <% else %>
-          <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-        <% end %>
+        <%= render partial: 'user_image', locals: { user: @user } %>
         <% if current_user == @user %>
           <span id='show-avatar-modal' class="image-link">Edit</span>
         <% end %>
@@ -155,12 +147,7 @@
               <div class="poster-info">
                 <%= link_to user_path(@user) do %>
                   <div class="image-wrapper">
-                    <% if @user.avatar.attached?  %>
-                      <%= image_tag @user.avatar, class: 'profile-image' %>
-                    <% else %>
-                      <%#=  FIX: this should be fixed to select images based on gender %> 
-                      <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-                    <% end %>
+                    <%= render partial: 'user_image', locals: { user: @user } %>
                   </div>
                 <% end %>
                 <div class="post-data">
@@ -226,11 +213,7 @@
                 <div class="comment">
                   <div class="user-avatar">
                     <%= link_to user_path(comment.user) do %>
-                      <% if comment.user.avatar.attached? %>
-                        <%= image_tag comment.user.avatar, class: 'profile-image' %>
-                      <% else %>
-                        <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-                      <% end %>
+                      <%= render partial: 'user_image', locals: { user: comment.user } %>
                     <% end %>
                   </div>
                   <div class="comment-body">
@@ -254,12 +237,7 @@
             <% if user_signed_in? %>
               <div class="comment-form">
                 <div class="comment-avatar">
-                  <% if current_user.avatar.attached?  %>
-                    <%= image_tag current_user.avatar, class: "profile-image" %>  
-                  <% else %>
-                    <%#=  FIX: this should be fixed to select images based on gender %> 
-                    <%= image_tag('male_profile_pic.jpg', class: 'profile-image') %>
-                  <% end %>
+                  <%= render partial: 'user_image', locals: { user: current_user } %>
                 </div>
                 <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
                   <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>

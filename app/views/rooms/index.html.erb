@@ -5,11 +5,7 @@
       <%= link_to room do%>
         <div id="room-<%= room.id %>" class="room-linker <%= 'active' if room == @room %>">
           <div class="user-image">
-            <% if user.avatar.attached? %>
-              <%= image_tag user.avatar, class: 'profile-image'%>
-            <% else %>
-              <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-            <% end %>
+            <%= render partial: 'user_image', locals: { user: user } %>
           </div>
           <div class="body">
             <span class="name"><%= user.fullname %></span>
@@ -26,11 +22,7 @@
     <% if @room.present? %>
       <div class="messages-header">
         <div class="user-image">
-          <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar, class: 'profile-image' %>
-          <% else %>
-            <%= image_tag 'male-profile-pic', class: 'profile-image' %>
-          <% end %>
+          <%= render partial: 'user_image', locals: { user: current_user } %>
         </div>
         <div class="user-name">
           <div class="name"><%= current_user.fullname %></div>

@@ -38,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def new_friends
-    
+    @unread_messages = check_if_there_is_new_messages(current_user)
   end
 end

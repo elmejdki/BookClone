@@ -44,6 +44,5 @@ consumer.subscriptions.create("MessageNotificationChannel", {
       messages_countner.classList.remove('d-non');
       messages_countner.innerText = data.dead_rooms;
     }
-
   }
 });

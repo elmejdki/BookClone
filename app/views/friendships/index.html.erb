@@ -13,11 +13,7 @@
             <div class="request">
               <div class="user-image">
                 <%= link_to user_path(friend) do %>
-                  <% if friend.avatar.attached? %>
-                    <%= image_tag friend.avatar, class: 'profile-image' %>
-                  <% else %>
-                    <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-                  <% end %>
+                  <%= render partial: 'user_image', locals: { user: friend } %>
                 <% end %>
               </div>
               <div class="user-info">
@@ -47,11 +43,7 @@
             <div class="request">
               <div class="user-image">
                 <%= link_to user_path(friend) do %>
-                  <% if friend.avatar.attached? %>
-                    <%= image_tag friend.avatar, class: 'profile-image' %>
-                  <% else %>
-                    <%= image_tag 'male_profile_pic', class: 'profile-image' %>
-                  <% end %>
+                  <%= render partial: 'user_image', locals: { user: friend } %>
                 <% end %>
               </div>
               <div class="user-info">
