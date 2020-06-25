@@ -377,6 +377,7 @@ body {
   }
 
   .timeline-container {
+    width: 100%;
     padding: 0 20px;
 
     .post-form {
@@ -714,7 +715,7 @@ body {
     flex-shrink: 1;
     display: flex;
     flex-direction: column;
-
+     
     .messages-header {
       display: flex;
       padding: 10px 20px;
@@ -798,8 +799,8 @@ body {
 }
 
 .review-container {
+  width: 100%;
   display: flex;
-  
   .about-app {
     width: 150px;
     margin: 0 10px;

@@ -1,11 +1,8 @@
 <div class="columns is-centered column-style">
-  <div class="column is-one-fifth mt">
-  </div>
-  <div class= "column is-three-fifths">
+  
+  <div class= "column is-full">
     <div class="timeline-container">
       <h1 class="title is-2 has-text-base has-text-centered has-text-success"> Reviews </h1>
-      
-      
       
       <div class="review-container">
         <div class="about-app">
@@ -66,15 +63,15 @@
             <div class="post-text">
               <%= review.text %>
             </div>
+          
           <% if review.user == current_user %>
-            <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
+            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
           <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="column is-one-fifth mt has-text-centered padding-rigth">
-  </div>
+  
 </div>
 
