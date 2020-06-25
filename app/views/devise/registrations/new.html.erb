@@ -1,77 +1,141 @@
-<h2>Sign up</h2>
+<div class="page-wrapper sign-up-image">
+  <div class="form-container sign-up">
+    <h2 class="title is-3">Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :fullname %><br />
-    <%= f.input_field :fullname %>
-    <%= render  partial: "error_handler", locals: { source: :fullname } %>
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <%= f.input_field :fullname, class: 'input is-small', placeholder: 'Full Name' %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <%= render  partial: "error_handler", locals: { source: :fullname } %>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <%= f.input_field :email, class: 'input is-small', placeholder: 'example@hotmail.com' %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <%= render partial: "error_handler", locals: { source: :email } %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field radio-group">
+        <%= f.input :gender, as: :radio_buttons, collection: [['male', 'male'], ['female', 'female']], checked: ['male', 'male'], class: 'input' %>
+        <%= render partial: "error_handler", locals: { source: :gender } %>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded">
+              <%= f.input_field :username, class: 'input is-small', placeholder: 'Username' %>
+              <%= render  partial: "error_handler", locals: { source: :username } %>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <%= f.input_field :profession, class: 'input is-small', placeholder: 'Profession' %>
+              <%= render partial: "error_handler", locals: { source: :profession } %>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <%= f.input_field :city, class: 'input is-small', placeholder: 'City' %>
+              <%= render partial: "error_handler", locals: { source: :city } %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <div id="image-upload-js" class="file has-name">
+                <label class="file-label">
+                  <%= f.file_field :avatar, class: 'file-input' %>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-image"></i>
+                    </span>
+                    <span class="file-name has-text-grey-light">
+                      profile picture
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <div id="image-upload-js" class="file has-name">
+                <label class="file-label">
+                  <%= f.file_field :cover_picture, class: 'file-input' %>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-image"></i>
+                    </span>
+                    <span class="file-name has-text-grey-light">
+                      cover picture
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <%= f.text_area :bio, class: 'textarea is-small', as: :text, :input_html => { :cols => 5, :rows => 10 }, placeholder: 'Bio: I\'m nice guy invite me to have fun' %>
+              <%= render partial: "error_handler", locals: { source: :bio } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: 'label' %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <div class="control has-icons-left">
+          <%= f.password_field :password, autocomplete: "new-password", class: 'input is-small' %>
+          <%= render  partial: "error_handler", locals: { source: :password } %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'label' %>
+        <div class="control has-icons-left">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input is-small' %>
+          <%= render  partial: "error_handler", locals: { source: :password_confirmation } %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+      </div>
+
+      <%= f.submit "Sign up", class: 'button is-base' %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.input_field :username %>
-    <%= render partial: "error_handler", locals: { source: :username } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :avatar, label: '' %><br />
-    <%= f.file_field :avatar, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cover_picture %><br />
-    <%= f.file_field :cover_picture %>
-  </div>
-
-  <div class="field">
-    <%= f.input :gender, as: :radio_buttons, collection: [['female', 'female'], ['male', 'male']], checked: ['male', 'male'] %>
-    <%= render partial: "error_handler", locals: { source: :gender } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-    <%= render  partial: "error_handler", locals: { source: :email } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profession %><br />
-    <%= f.input_field :profession %>
-    <%= render  partial: "error_handler", locals: { source: :profession } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.input_field :city %>
-    <%= render  partial: "error_handler", locals: { source: :city} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
-    <%= render partial: "error_handler", locals: { source: :bio } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <%= render  partial: "error_handler", locals: { source: :password } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    <%= render  partial: "error_handler", locals: { source: :password_confirmation } %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

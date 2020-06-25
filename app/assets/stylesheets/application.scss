@@ -356,6 +356,55 @@ body {
   margin: 50px;
 }
 
+.file-cta {
+  padding: 10px;
+  height: 30px;
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+
+  .file-icon {
+    margin: 0;
+    color: $base-color;
+    
+    .fa {
+      font-size: 25px;
+    }
+  }
+
+  .file-name {
+    font-size: 15px;
+    border: none;
+  }
+}
+
+.radio-group {
+  .input {
+    width: auto;
+    max-width: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    height: fit-content;
+
+    label {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+
+    .radio {
+      label {
+        display: flex;
+        width: 55px;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
 .post-form {
   form {
     display: flex;
@@ -371,29 +420,6 @@ body {
       position: absolute;
       bottom: 65px;
       left: 5px;
-
-      .file-cta {
-        padding: 10px;
-        height: 30px;
-        background-color: white;
-        border-radius: 2px;
-        display: flex;
-        justify-content: center;
-
-        .file-icon {
-          margin: 0;
-          color: $base-color;
-          
-          .fa {
-            font-size: 25px;
-          }
-        }
-
-        .file-name {
-          font-size: 15px;
-          border: none;
-        }
-      }
     }
 
     .button {
@@ -899,4 +925,13 @@ body {
     margin: 30px;
     padding: 20px;
   }
+
+  .sign-up {
+    max-width: 400px;
+  }
 }
+
+// add media queries here
+// .sign-up-image {
+//   height: fit-content;
+// }
