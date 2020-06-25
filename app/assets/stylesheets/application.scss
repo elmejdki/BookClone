@@ -814,15 +814,67 @@ body {
     display: flex;
     flex-direction: column;
     // justify-content: flex-end;
-    .new_review {
-      display: flex;
-      flex-direction: column;
+    // .new_review {
+    //   display: flex;
+    //   flex-direction: column;
       
-      .button {
-        align-self: flex-end;
-        margin-top: 5px;
-      }
-    }
+    //   .button {
+    //     align-self: flex-end;
+    //     margin-top: 5px;
+    //   }
+    // }
 
   }
+}
+
+.rating {
+  display: flex;
+  transform: rotateY(180deg);
+
+  input {
+    display: none;
+  }
+
+  label {
+    display: block;
+    position: relative;
+    width: 20px;
+    
+    &:before {
+      font-family: "fontAwesome";
+      content: '\f005';
+      display: block;
+      font-size: 20px;
+      color: lightgrey;
+      text-shadow: 0 1px rgba(0,0,0,0.5) ;
+    }
+    
+    &:after {
+      font-family: "fontAwesome";
+      content: '\f005';
+      display: block;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      font-size: 20px;
+      color: yellow;
+      opacity: 0;
+      transition: .5s;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5) ;
+    }
+
+    &:hover:after{
+      opacity: 1;
+    }
+  }
+}
+
+.rating input:checked ~ label:after,
+.rating label:hover ~ label:after {
+  opacity: 1;
+}
+
+.rating-button {
+  display: flex;
+  justify-content: space-between;
 }

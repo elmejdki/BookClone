@@ -4,13 +4,9 @@
   <div class= "column is-full">
     <div class="timeline-container">
       <h1 class="title is-2 has-text-base has-text-centered"> Reviews </h1>
-      <div class="starrr" id="star1">
-        <a href="#" class="fa fa-star-o"></a>
-        <a href="#" class="fa fa-star-o"></a>
-        <a href="#" class="fa fa-star-o"></a>
-        <a href="#" class="fa fa-star-o"></a>
-        <a href="#" class="fa fa-star-o"></a>
-      </div>
+      
+      
+      
       <div class="review-container">
         <div class="about-app">
           <%= image_tag 'app-logo' %>
@@ -21,8 +17,16 @@
           <div class="review-form">
             <%= simple_form_for @review do |f| %>
               <%= f.text_area :text, label: 'name', placeholder: 'Please tell us about our app, to improve it.', class:"textarea post-area" %>
-              
-              <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base' %>
+              <div class="rating-button">
+                <div class="rating">
+                  <input type="radio" name="star" id="star1"><label for="star1"></label>
+                  <input type="radio" name="star" id="star2"><label for="star2"></label>
+                  <input type="radio" name="star" id="star3"><label for="star3"></label>
+                  <input type="radio" name="star" id="star4"><label for="star4"></label>
+                  <input type="radio" name="star" id="star5"><label for="star5"></label>
+                </div>
+                <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base' %>
+              </div>
             <% end %>
           </div>
         <% end %>
@@ -66,25 +70,3 @@
   </div>
 </div>
 
-<script src="/starrr.js"></script>
-<script>
-    $('#star1').starrr({
-      change: function(e, value){
-        if (value) {
-          $('.your-choice-was').show();
-          $('.choice').text(value);
-        } else {
-          $('.your-choice-was').hide();
-        }
-      }
-    });
-
-    var $s2input = $('#star2_input');
-    $('#star2').starrr({
-      max: 10,
-      rating: $s2input.val(),
-      change: function(e, value){
-        $s2input.val(value).trigger('input');
-      }
-    });
-  </script>
