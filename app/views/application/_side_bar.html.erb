@@ -1,7 +1,7 @@
 <% if user_signed_in? && current_user.last_friend_requests.length > 0 %>
-<div class= "box">
+<div class= "box md-display-none">
   <h2 class="title is-5">New Friend Requests</h2>
-  <div class="requests-container">
+  <div class="requests-container timeline-requests-container">
     <% current_user.last_friend_requests.each do |friend| %>
       <div class="request total-width">
         <%= link_to user_path(friend) do %>

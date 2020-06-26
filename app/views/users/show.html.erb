@@ -97,6 +97,12 @@
               </div>
             <% end %>
           </div>
+        <% else %>
+          <div class="friend-status">
+            <div class="friend-request-action">
+              <%= link_to "Edit Profile", edit_user_registration_path, class: 'button is-small is-link' %>
+            </div>
+          </div>
         <% end %>
       </div>
       <% if @user != current_user %>
@@ -120,12 +126,15 @@
             <div class="post-form">
               <%= simple_form_for @post do |f| %>
                 <%= f.text_area :text, label: 'name', placeholder: 'what\'s in your mind?', class:"textarea post-area" %>
-                <div class="file has-name">
+                <div id="image-upload-js" class="file has-name">
                   <label class="file-label">
                     <%= f.file_field :image, class: 'file-input' %>
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fa fa-image"></i>
+                      </span>
+                      <span class="file-name has-text-grey-light">
+                        No file uploaded
                       </span>
                     </span>
                   </label>
@@ -251,3 +260,14 @@
     </div>
   </div>
 </div>
+<script>
+const menu = document.querySelector('.menu');
+const btn = menu.querySelector('.nav-tgl');
+btn.addEventListener('click', evt => {
+  if (menu.className.indexOf('active') === -1) {
+    menu.classList.add('active');
+  } else {
+    menu.classList.remove('active');
+  }
+})
+</script>

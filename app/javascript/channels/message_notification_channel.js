@@ -22,6 +22,9 @@ consumer.subscriptions.create("MessageNotificationChannel", {
       user_id = Number(user_element.getAttribute('data-user-id'));
     }
 
+    const messages_countner = document.getElementById('new-messages');
+    const messages_countner_2 = document.getElementById('new-messages-2');
+    const burger_menu_circle = document.getElementById('message-circle');
     const room = data.notified_room.id
     if(room != room_id) {
       if(user_id != data.user){
@@ -36,13 +39,21 @@ consumer.subscriptions.create("MessageNotificationChannel", {
         if(!message_menu.classList.contains('message_notice')){
           message_menu.classList.add('message_notice')
         }
-      }
-    }
 
-    const messages_countner = document.getElementById('new-messages');
-    if(messages_countner) {
-      messages_countner.classList.remove('d-non');
-      messages_countner.innerText = data.dead_rooms;
+        if(messages_countner) {
+          messages_countner.classList.remove('d-non');
+          messages_countner.innerText = data.dead_rooms;
+        }
+
+        if(messages_countner_2) {
+          messages_countner_2.classList.remove('d-non');
+          messages_countner_2.innerText = data.dead_rooms;
+        }
+        
+        if(burger_menu_circle) {
+          burger_menu_circle.classList.remove('d-non');
+        }
+      }
     }
   }
 });

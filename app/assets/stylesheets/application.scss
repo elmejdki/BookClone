@@ -829,7 +829,7 @@ body {
 .suggested-friends {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 
   .suggested-friend {
     height: 120px;
@@ -1053,12 +1053,62 @@ body {
   }
 }
 
+.display-none {
+  display: none;
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
+  header {
+    .notification {
+      top: 180px;
+    }
+  }
+
+  .md-display-none {
+    display: none;
+  }
+
+  .columns:not(.is-desktop) {
+    display: flex;
+    flex-direction: column;
+
+    .columns {
+      flex-direction: row;
+    }
+  }
+
   .main-container {
+      .timeline-requests-container {
+        .request {
+          width: 208px;
+
+          .user-image {
+            min-width: 80px;
+            height: 80px;
+          }
+
+          .username {
+            font-size: 17px;
+          }
+
+          .action {
+            font-size: 25px;
+          }
+        }
+      }
 
     .column-style {
       margin-right: 0;
+    }
+
+    .column.is-three-fifths {
+      flex: none;
+      width: 100%;
+    }
+
+    .column.is-one-fifth {
+      flex: none;
+      width: 100%;
     }
 
     .profile-container {
@@ -1115,6 +1165,256 @@ body {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
+  header {
+    .notification {
+      top: 60px;
+    }
 
+    .profile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .avatar {
+        width: 200px;
+        height: 200px;
+      }
+
+      .name {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .username {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .rooms-page {
+    .message-notification {
+      padding: 60px;
+    }
+  }
+
+  .columns:not(.is-desktop) {
+    .columns {
+      flex-direction: column;
+    }
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .main-container {
+    .rooms-page {
+      height: 100vh;
+    }
+
+    .user-info-container {
+      .profile-show-container {
+        left: 30px;
+      }
+    }
+
+    .timeline-container {
+      .posts-container {
+        .box {
+          .post-image {
+            img {
+              height: 415px;
+            }
+          }
+        }
+      }
+    }
+  }
+ 
+  header {
+    .nav-bar {
+      display: none;
+    }
+
+    .display-none {
+      display: block;
+    }
+
+    .nav {
+      .search-bar {
+        position: relative;
+        padding-top: 20px;
+
+        .fa-search {
+          position: absolute;
+          right: 20px;
+          bottom: 10px;
+        }
+      }
+
+      li {
+        width: 350px;
+        
+        span {
+          padding: 3px 12px;
+          background-color: #ff3300;
+          color: white;
+          border-radius: 13px;
+        }
+
+        a {
+          font-size: 30px;
+          font-weight: bold;
+          color: white;
+        }
+      }
+    }
+    
+    .nav-tgl {
+      display: inline-block;
+      cursor: pointer;
+      position: fixed;
+      z-index: 100;
+      right: 30px;
+      top: 30px;
+      width: 70px;
+      height: 70px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      background: #fff;
+      box-shadow: 0px 4px 24px rgba(#000, 0.24);
+      line-height: 0.6;
+      text-align: center;
+
+      .circle {
+        position: absolute;
+        padding: 10px;
+        background-color: $red-color;
+        border-radius: 50%;
+        right: 50px;
+        bottom: 0px;
+      }
+      
+      // making the dividers
+      > span {
+        // the second divider
+        display: inline-block;
+        position: relative;
+        height: 2px;
+        width: 34px;
+        border-radius: 1px;
+        background: $base-color;
+        vertical-align: middle;
+        
+        // the first & the third dividers
+        &:before, &:after {
+          display: inline-block;
+          position: absolute;
+          content: "";
+          height: 2px;
+          border-radius: 1px;
+          background: $base-color;
+          // for the hover state
+          transition: all 200ms;
+        }
+        &:before {
+          top: -11px;
+          left: 3px;
+          width: 28px;
+        }
+        &:after {
+          top: 11px;
+          left: 6px;
+          width: 22px;
+        }
+      }
+      
+      // ofcorse we should find a replacement for the focus state but it's not our topic
+      &:focus {outline: none}
+      
+      &:hover > span:after, &:hover > span:before {
+        width: 34px;
+        left: 0;
+      }
+    }
+    
+    // for the nav background (styling the nav itself is not our topic)
+    .nav ul {
+      display: flex;
+      padding-top: 60px;
+      align-items: center;
+      flex-direction: column;
+      position: fixed;
+      visibility: hidden;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 100vw;
+      height: 100vh;
+      background: $base-color;
+      transition: all 500ms ease-in-out;
+      
+      // that's all the pen about
+      clip-path: circle(30px at calc(100% - 65px) 65px);
+      // for AT
+    }
+    
+    // when it gits activated
+    .menu.active {
+      .nav ul {
+        visibility: visible;
+    
+        // that's all the pen about
+        clip-path: circle(100%);
+      }
+      
+      .nav-tgl > span {
+        height: 0;
+        &:after, &:before {
+          top: 0px;
+          left: 0;
+          width: 34px;
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+        &:before {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .main-container {
+    .profile-container {
+      display: none;
+    }
+
+    .mt {
+      margin-top: 0;
+    }
+  }
+}
+
+
+@media screen and (max-width: 450px) {
+  .main-container {
+    .timeline-container {
+      .posts-container {
+        .box {
+          .post-image {
+            img {
+              height: 215px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

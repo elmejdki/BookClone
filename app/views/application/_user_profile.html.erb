@@ -24,7 +24,7 @@
       <%= link_to rooms_path, class: 'messages' do %>
         <i class="fas fa-envelope"></i>
         Messages
-        <span class="<%= @unread_messages.zero? ? 'd-non' : '' %>" id="new-messages"><%= @unread_messages %></span>
+        <span class="<%= @unread_messages && @unread_messages.zero? ? 'd-non' : '' %>" id="new-messages"><%= @unread_messages %></span>
       <% end %>
     </div>
   </div>
