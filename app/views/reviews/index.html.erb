@@ -2,14 +2,14 @@
   
   <div class= "column is-full">
     <div class="timeline-container">
-      <h1 class="title is-2 has-text-base has-text-centered has-text-success"> Reviews </h1>
+      <h1 class="title is-2 has-text-base has-text-centered has-text-warning main-title"> Reviews </h1>
       
       <div class="review-container">
         <div class="about-app">
           <%= image_tag 'app-logo' %>
-          <h3 class="subtitle is-6 has-text-grey">bookclone</h3>
+          <h3 class="title is-6 has-text-base ">bookclone</h3>
           <% unless @reviews.empty? %>
-            <h3 class="subtitle is-7 has-text-grey-light"> Average rate : <%= '%1.1f' % @reviews.average(:rate) %> </h3>
+            <h4 class="subtitle is-7 has-text-grey-light"> Average rate : <%= '%1.1f' % @reviews.average(:rate) %> </h4>
           <% end %>
         </div>
         <% if user_signed_in? %>
@@ -18,13 +18,13 @@
               <%= f.text_area :text, label: 'name', placeholder: 'Please tell us about our app, to improve it.', class:"textarea post-area" %>
               <div class="rating-button">
                 <div class="rating">
-                  <input type="radio" name="review[rate]" id="star1" value="5"><label for="star1"></label>
+                  <input type="radio" name="review[rate]" id="star1" value="5" checked ><label for="star1"></label>
                   <input type="radio" name="review[rate]" id="star2" value="4"><label for="star2"></label>
                   <input type="radio" name="review[rate]" id="star3" value="3"><label for="star3"></label>
                   <input type="radio" name="review[rate]" id="star4" value="2"><label for="star4"></label>
                   <input type="radio" name="review[rate]" id="star5" value="1"><label for="star5"></label>
                 </div>
-                <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base is-success' %>
+                <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base is-warning' %>
               </div>
             <% end %>
           </div>
@@ -51,12 +51,15 @@
                     <span class="name"><%= review.user.fullname %></span>
                   <% end %>
                   <span class="username">@<%= review.user.username %></span>
-                  <% review.rate.times do %>
-                    <span><i class="fas fa-star has-text-grey-light"></i><span>
-                  <% end %>
-                  <span class="date">
+                  <p class="date">
                     <%= time_ago_in_words(review.created_at) %>
-                  </span>
+                  </p>
+                  <% review.rate.times do %>
+                    <span><i class="fas fa-star has-text-warning shadow"></i><span>
+                  <% end %>
+                  <% (5 - review.rate).times do %>
+                    <span><i class="fas fa-star has-text-grey-light shadow"></i><span>
+                  <% end %>
                 </div>
               </div>
             </div>
