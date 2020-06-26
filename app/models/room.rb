@@ -4,8 +4,9 @@ class Room < ApplicationRecord
 
   scope :user_rooms, ->(user) { user.rooms.includes(:users).order(last_message: :desc) }
 
-  def side_user(current_user)
-    if self.users[0] == current_user
+  def side_user(user)
+    users = self.users.uniq
+    if users[0] == user
       users[1]
     else
       users[0]
