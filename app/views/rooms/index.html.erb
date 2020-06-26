@@ -32,7 +32,7 @@
         </div>
       </div>
       <div id="messages" class="messages-body">
-        <% @room.messages.each_with_index do |msg, index| %>
+        <% @messages.each_with_index do |msg, index| %>
           <% unless msg.body == "nil" %>
             <% if index == @message_number %>
               <hr class="red-hr" />

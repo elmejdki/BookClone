@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
     Room.find(params[:id]).messages.where('unread = true and user_id != ?', current_user.id).update(unread: false)
 
     @room = Room.find(params[:id])
-    @messages = @room.messages
+    @messages = @room.messages.order(created_at: :asc)
     @rooms = current_user.rooms.distinct
     render 'index'
   end
