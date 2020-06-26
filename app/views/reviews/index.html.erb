@@ -2,7 +2,7 @@
   
   <div class= "column is-full">
     <div class="timeline-container">
-      <h1 class="title is-2 has-text-base has-text-centered has-text-warning main-title"> Reviews </h1>
+      <h1 class="title is-2 has-text-base has-text-centered has-text-base main-title"> Reviews </h1>
       
       <div class="review-container">
         <div class="about-app">
@@ -24,7 +24,7 @@
                   <input type="radio" name="review[rate]" id="star4" value="2"><label for="star4"></label>
                   <input type="radio" name="review[rate]" id="star5" value="1"><label for="star5"></label>
                 </div>
-                <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base is-warning' %>
+                <%= f.button :submit, 'Submit review' ,class: 'button is-medium btn-base is-base' %>
               </div>
             <% end %>
           </div>
@@ -55,7 +55,7 @@
                     <%= time_ago_in_words(review.created_at) %>
                   </p>
                   <% review.rate.times do %>
-                    <span><i class="fas fa-star has-text-warning shadow"></i><span>
+                    <span><i class="fas fa-star has-text-base shadow"></i><span>
                   <% end %>
                   <% (5 - review.rate).times do %>
                     <span><i class="fas fa-star has-text-grey-light shadow"></i><span>
@@ -68,7 +68,7 @@
             </div>
           
           <% if review.user == current_user %>
-            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
+            <%= link_to '<i class="fa fa-trash has-text-base"></i>'.html_safe, review_path(review), method: :delete %>
           <% end %>
           </div>
         <% end %>
