@@ -1,4 +1,4 @@
-<% if user.avatar.attached? %>
+<% if user && user.avatar.attached? %>
   <%= image_tag user.avatar, class: 'profile-image'%>
 <% else %>
   <% if user.gender == 'female' %>
