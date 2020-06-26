@@ -732,6 +732,7 @@ body {
   
     .cover-picture {
       position: relative;
+      margin-bottom: 70px;
   
       .cover-image {
         height: 300px;
@@ -1030,6 +1031,10 @@ body {
       }
     }
   }
+}
+
+.is-black {
+  background-color: black;
 }
 
 .page-wrapper {
