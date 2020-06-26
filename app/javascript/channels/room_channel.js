@@ -34,9 +34,11 @@ document.addEventListener('turbolinks:load', () => {
         if (messages_container) {
           messages_container.innerHTML = messages_container.innerHTML + message;
         }
-  
+
         const message_input = document.getElementById('message_body');
-        message_input.value = '';
+        if (user_id == data.user) {
+          message_input.value = '';
+        }
   
         document.querySelector(".messages-body").scrollTo(0,
           document.querySelector(".messages-body").scrollHeight);

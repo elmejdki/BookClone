@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
     user = room.side_user(current_user)
 
     ActionCable.server.broadcast "room_channel_#{@message.room.id}",
-                                  message: @message
+                                  message: @message,
+                                  user: current_user.id
 
     ActionCable.server.broadcast "message_notification_channel",
                                   notified_room: @message.room,
