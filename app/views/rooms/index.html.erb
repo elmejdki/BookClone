@@ -2,19 +2,21 @@
   <div class="rooms-shower">
     <% @rooms.each do |room| %>
       <% user = room.side_user(current_user) %>
-      <%= link_to room do%>
-        <div id="room-<%= room.id %>" class="room-linker <%= 'active' if room == @room %>">
-          <div class="user-image">
-            <%= render partial: 'user_image', locals: { user: user } %>
+      <% if user %>
+        <%= link_to room do%>
+          <div id="room-<%= room.id %>" class="room-linker <%= 'active' if room == @room %>">
+            <div class="user-image">
+              <%= render partial: 'user_image', locals: { user: user } %>
+            </div>
+            <div class="body">
+              <span class="name"><%= user.fullname %></span>
+              <span class="username">@<%= user.username %></span>
+            </div>
+            <% if room.messages.last.user_id != current_user.id && room.messages.last.unread %>
+              <div class="message-notice"></div>
+            <% end %>
           </div>
-          <div class="body">
-            <span class="name"><%= user.fullname %></span>
-            <span class="username">@<%= user.username %></span>
-          </div>
-          <% if room.messages.last.user_id != current_user.id && room.messages.last.unread %>
-            <div class="message-notice"></div>
-          <% end %>
-        </div>
+        <% end %>
       <% end %>
     <% end %> 
   </div>
