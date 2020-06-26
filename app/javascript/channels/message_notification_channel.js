@@ -25,6 +25,8 @@ consumer.subscriptions.create("MessageNotificationChannel", {
     const messages_countner = document.getElementById('new-messages');
     const messages_countner_2 = document.getElementById('new-messages-2');
     const burger_menu_circle = document.getElementById('message-circle');
+    const message_menu = document.getElementById('message_menu');
+    
     const room = data.notified_room.id
     if(room != room_id) {
       if(user_id != data.user){
@@ -35,7 +37,6 @@ consumer.subscriptions.create("MessageNotificationChannel", {
       }
 
       if(data.side_user == user_id){
-        const message_menu = document.getElementById('message_menu');
         if(!message_menu.classList.contains('message_notice')){
           message_menu.classList.add('message_notice')
         }
