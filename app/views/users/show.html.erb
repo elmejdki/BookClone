@@ -63,7 +63,7 @@
         <%= image_tag @user.cover_picture, class: 'cover-image' %>
       <% else %>
         <%# image_tag 'cover-pic', class: 'cover-image' %>
-        <div class="cover-image is-black">
+        <div class="cover-image is-black"></div>
       <% end %>
       <% if current_user == @user %>
         <span id='show-cover-modal' class="image-link cover-button">Change Cover</span>
