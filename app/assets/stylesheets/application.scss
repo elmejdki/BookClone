@@ -1092,22 +1092,6 @@ body {
     }
   }
 
-  .rooms-page {
-    .messages-container {
-      position: relative;
-      padding-bottom: 70px;
-
-      .chat-box {
-        position: absolute;
-        bottom: 0;
-        padding-top: 20px;
-        background-color: white; 
-        left: 120px;
-        right: 0;
-      }
-    }
-  }
-
   .page-wrapper {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
@@ -1235,14 +1219,6 @@ body {
 
   body {
     margin: 0;
-  }
-
-  .rooms-page {
-    .messages-container {
-      .chat-box {
-        left: -13px;
-      }
-    }
   }
 
   .main-container {
