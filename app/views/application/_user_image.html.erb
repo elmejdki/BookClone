@@ -1,9 +1,13 @@
-<% if user && user.avatar.attached? %>
-  <%= image_tag user.avatar, class: 'profile-image'%>
-<% else %>
-  <% if user.gender == 'female' %>
-    <%= image_tag 'https://i.pinimg.com/originals/36/b6/c1/36b6c14f9719de74db3c863b20857750.jpg', class: 'profile-image' %>
+<% if user %>
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar, class: 'profile-image'%>
   <% else %>
-    <%= image_tag 'https://img2.thejournal.ie/inline/1881369/original/?width=630&version=1881369', class: 'profile-image' %>
+    <% if user.gender == 'female' %>
+      <%= image_tag 'https://i.pinimg.com/originals/36/b6/c1/36b6c14f9719de74db3c863b20857750.jpg', class: 'profile-image' %>
+    <% else %>
+      <%= image_tag 'https://img2.thejournal.ie/inline/1881369/original/?width=630&version=1881369', class: 'profile-image' %>
+    <% end %>
   <% end %>
+<% else %>
+  <%= image_tag 'https://img2.thejournal.ie/inline/1881369/original/?width=630&version=1881369', class: 'profile-image' %>
 <% end %>
