@@ -61,6 +61,89 @@
           <% end %>
         </div>
       </nav>
+
+      <div class="menu display-none">
+        <% if user_signed_in? %>
+          <button class="nav-tgl" type="button" aria-label="toggle menu">
+            <span aria-hidden="true"></span>
+            <div id="message-circle" class="circle <%= @unread_messages.nil? || @unread_messages.zero? ? 'd-non' : '' %>"></div>
+          </button>
+          <nav class="nav">
+            <ul>
+              <li class="mt">
+                <div class="profile text-center">
+                  <div class="avatar">
+                    <%= link_to user_path(current_user) do %>
+                      <%= render partial: 'user_image', locals: { user: current_user } %>
+                    <% end %>
+                  </div>
+                  <div class="name"><%= current_user.fullname %></div>
+                  <div class="username">@<%= current_user.username %></div>
+                </div>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path do %>
+                  <i class="fas fa-user-friends"></i>
+                  New Members
+                <% end %>
+              </li>
+              <li>
+                <%= link_to friendships_path,class: 'friends' do %>
+                  <i class="fas fa-user-friends"></i>
+                  Friends
+                <% end %>
+              </li>
+              <li>
+                <%= link_to friend_requests_path,class: '' do %>
+                  <i class="fa fa-plus"></i>
+                  Friend Requests
+                <% end %>
+              </li>
+              <li>
+                <%= link_to rooms_path, class: 'messages' do %>
+                  <i class="fas fa-envelope"></i>
+                  Messages
+                  <span class="<%= @unread_messages.nil? || @unread_messages.zero? ? 'd-non' : '' %>" id="new-messages-2"><%= @unread_messages %></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete  do %>
+                  <i class="fas fa-sign-out-alt"></i>
+                  Sign Out
+                <% end %>
+              </li>
+              <li>
+                <div class="search-bar">
+                  <input type="text" class="input" placeholder="Search">
+                  <i class="fa fa-search"></i>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        <% else %>
+          <nav class="nav-bar">
+            <div class="nav-bar-content">
+              <a class="logo-container" href="/">
+                <span class="nav-logo">
+                  <i class="fab fa-bimobject"></i>
+                </span>
+                <span class="logo-text">
+                  BookClone
+                </span>
+              </a>
+            </div>
+            <div class="shrink-non">
+              <%= link_to 'Sign In', user_session_path, class: "sign-link" %>
+              <%= link_to 'Sign Up', new_user_registration_path, class: "sign-link" %>
+            </div>
+          </nav>
+        <% end %>
+      </div>
     </header>
 
     <main class="main-container">
