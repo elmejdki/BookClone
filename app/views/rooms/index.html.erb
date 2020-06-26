@@ -21,9 +21,11 @@
   <div class="messages-container">
     <% if @room.present? %>
       <div class="messages-header">
-        <div class="user-image">
-          <%= render partial: 'user_image', locals: { user: @room.side_user(current_user) } %>
-        </div>
+        <%= link_to user_path(@room.side_user(current_user)) do %>
+          <div class="user-image">
+            <%= render partial: 'user_image', locals: { user: @room.side_user(current_user) } %>
+          </div>
+        <% end %>
         <div class="user-name">
           <div class="name"><%= @room.side_user(current_user).fullname %></div>
           <span>Active 30m ago</span>
