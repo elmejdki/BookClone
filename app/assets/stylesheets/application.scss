@@ -1044,7 +1044,7 @@ body {
     background-color: rgba(255, 255, 255, 0.65);
     max-width: 290px;
     float: right;
-    margin: 30px;
+    margin: 50px 30px;
     padding: 20px;
   }
 
@@ -1057,15 +1057,23 @@ body {
   display: none;
 }
 
+.fix-height {
+  height: fit-content !important;
+}
+
 @media screen and (max-width: 1023px) {
   header {
     .notification {
       top: 180px;
     }
+
+    .md-display-none {
+      display: none;
+    }
   }
 
-  .md-display-none {
-    display: none;
+  .page-wrapper {
+    height: 100vh;
   }
 
   .columns:not(.is-desktop) {
@@ -1237,10 +1245,6 @@ body {
   }
  
   header {
-    .nav-bar {
-      display: none;
-    }
-
     .display-none {
       display: block;
     }

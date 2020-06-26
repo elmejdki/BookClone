@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_164851) do
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "reactions", "posts"
   add_foreign_key "reactions", "users"
 end
