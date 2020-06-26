@@ -35,7 +35,7 @@
         <% if @user.cover_picture.attached?  %>
           <%= image_tag @user.cover_picture, class: 'cover-image' %>
         <% else %>
-          <div class="is-black cover-image">
+          <div class="is-black cover-image"></div>
         <% end %>
       </div>
       <div id="image-upload-js-4" class="file has-name">
