@@ -30,8 +30,10 @@ document.addEventListener('turbolinks:load', () => {
             1 minute
           </div>
         </div>`;
-  
-        messages_container.innerHTML = messages_container.innerHTML + message;
+
+        if (messages_container) {
+          messages_container.innerHTML = messages_container.innerHTML + message;
+        }
   
         const message_input = document.getElementById('message_body');
         message_input.value = '';

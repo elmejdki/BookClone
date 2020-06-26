@@ -1066,10 +1066,6 @@ body {
     .notification {
       top: 180px;
     }
-
-    .md-display-none {
-      display: none;
-    }
   }
 
   .page-wrapper {
@@ -1177,6 +1173,10 @@ body {
   header {
     .notification {
       top: 60px;
+    }
+  
+    .md-display-none {
+      display: none;
     }
 
     .profile {

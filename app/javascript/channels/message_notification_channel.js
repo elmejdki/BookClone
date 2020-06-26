@@ -28,6 +28,7 @@ consumer.subscriptions.create("MessageNotificationChannel", {
     const message_menu = document.getElementById('message_menu');
     
     const room = data.notified_room.id
+
     if(room != room_id) {
       if(user_id != data.user){
         const room_container = document.getElementById('room-' + room)
@@ -35,25 +36,26 @@ consumer.subscriptions.create("MessageNotificationChannel", {
           room_container.innerHTML = room_container.innerHTML + "<div class=\"message-notice\"></div>"
         }
       }
+    }
 
-      if(data.side_user == user_id){
-        if(!message_menu.classList.contains('message_notice')){
-          message_menu.classList.add('message_notice')
-        }
-
-        if(messages_countner) {
-          messages_countner.classList.remove('d-non');
-          messages_countner.innerText = data.dead_rooms;
-        }
-
-        if(messages_countner_2) {
-          messages_countner_2.classList.remove('d-non');
-          messages_countner_2.innerText = data.dead_rooms;
-        }
-        
-        if(burger_menu_circle) {
-          burger_menu_circle.classList.remove('d-non');
-        }
+    if(data.side_user == user_id){
+      console.log('it should work here')
+      if(!message_menu.classList.contains('message_notice')){
+        message_menu.classList.add('message_notice')
+      }
+  
+      if(messages_countner) {
+        messages_countner.classList.remove('d-non');
+        messages_countner.innerText = Number(data.dead_rooms);
+      }
+  
+      if(messages_countner_2) {
+        messages_countner_2.classList.remove('d-non');
+        messages_countner_2.innerText = Number(data.dead_rooms);
+      }
+      
+      if(burger_menu_circle) {
+        burger_menu_circle.classList.remove('d-non');
       }
     }
   }
