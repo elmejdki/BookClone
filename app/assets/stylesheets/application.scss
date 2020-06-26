@@ -135,6 +135,7 @@ header {
     align-items: center;
     box-shadow: 1px 1px 11px -4px rgba(0, 0, 0, 0.507);
     justify-content: space-between;
+    padding-right: 30px;
     
     .nav-bar-content {
       display: flex;
@@ -456,6 +457,12 @@ body {
 
   .column-style {
     max-width: 1200px;
+  }
+
+  .columns {
+    .title {
+      padding-top: 20px;
+    }
   }
 
   .requests-container {
@@ -1069,7 +1076,7 @@ body {
 @media screen and (max-width: 1023px) {
   header {
     .notification {
-      top: 180px;
+      top: 50px;
     }
 
     .profile {
@@ -1079,13 +1086,13 @@ body {
       align-items: center;
 
       .avatar {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
       }
 
       .name {
         color: white;
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
       }
 
@@ -1202,7 +1209,7 @@ body {
 @media screen and (max-width: 768px) {
   header {
     .notification {
-      top: 60px;
+      top: 20px;
     }
   
     .md-display-none {
@@ -1269,7 +1276,7 @@ body {
       }
 
       li {
-        width: 350px;
+        width: 300px;
         
         span {
           padding: 3px 12px;
@@ -1279,7 +1286,7 @@ body {
         }
 
         a {
-          font-size: 30px;
+          font-size: 20px;
           font-weight: bold;
           color: white;
         }
@@ -1416,6 +1423,14 @@ body {
 
 
 @media screen and (max-width: 450px) {
+  header {
+    .notification {
+      top: 112px;
+      height: 100px;
+      width: 92%;
+      left: 16px;
+    }
+  }
   .main-container {
     .user-info-container {
       .cover-picture {
