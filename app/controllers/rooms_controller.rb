@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rooms = current_user.rooms.distinct
+    @rooms = current_user.rooms.order(last_message: :desc).distinct
   end
 
   def intialize_room
@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
 
     @room = Room.find(params[:id])
     @messages = @room.messages.order(created_at: :asc)
-    @rooms = current_user.rooms.distinct
+    @rooms = current_user.rooms.order(last_message: :desc).distinct
     render 'index'
   end
 end

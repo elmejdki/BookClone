@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
     @message.save
 
     room = Room.find(@message.room.id)
+    room.update(last_message: @message.created_at)
+
     user = room.side_user(current_user)
 
     ActionCable.server.broadcast "room_channel_#{@message.room.id}",
