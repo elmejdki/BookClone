@@ -98,19 +98,21 @@ document.addEventListener('turbolinks:load', () => {
       cover_modal.classList.remove('is-active');
     }
     
-    avatar_modal_button.addEventListener('click', () => {
-      avatar_modal.classList.add('is-active');
-    });
+    if (avatar_modal_button) {
+      avatar_modal_button.addEventListener('click', () => {
+        avatar_modal.classList.add('is-active');
+      });
 
-    cover_modal_button.addEventListener('click', () => {
-      cover_modal.classList.add('is-active');
-    });
+      cover_modal_button.addEventListener('click', () => {
+        cover_modal.classList.add('is-active');
+      });
+    }
 
     avatar_close.addEventListener('click', close_action);
     avatar_background.addEventListener('click', close_action);
     cover_close.addEventListener('click', close_action);
     cover_background.addEventListener('click', close_action);
-    
+
     fileInput_3.onchange = () => {
       if (fileInput_3.files.length > 0) {
         const fileName = document.querySelector('#image-upload-js-3 .file-name');

@@ -10,12 +10,15 @@ class RoomsController < ApplicationController
 
     room = nil;
 
+    
     if rooms.empty?
       room = Room.new
       room.save
-
+      
       Message.create(user_id: params[:id], room_id: room.id, body: 'nil', unread: false)
-      Message.create(user_id: current_user.id, room_id: room.id, body: 'Hi', unread: true)
+      message = Message.create(user_id: current_user.id, room_id: room.id, body: 'Hi', unread: true)
+
+      room.update(last_message: message.created_at)
 
       ActionCable.server.broadcast "message_notification_channel",
                                   notified_room: room,
