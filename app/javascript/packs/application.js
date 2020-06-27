@@ -176,15 +176,15 @@ document.addEventListener('turbolinks:load', () => {
     })
   }
 
-  const comment_containers = document.querySelectorAll('.comment-container');
-  if (comment_containers) {
-    Array.prototype.slice.call(comment_containers).forEach((container) => {
+  const comment_container = document.querySelectorAll('.comment-container');
+  if (comment_container) {
+    Array.prototype.slice.call(comment_container).forEach((container) => {
       container.addEventListener('click', (e) => {
         if (e.target.classList.contains('fa-trash')) {
           e.target.parentNode.parentNode.parentNode.remove();
         }
       });
-    })
+    });
   }
 
   window.addEventListener('resize', () => {

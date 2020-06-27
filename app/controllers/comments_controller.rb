@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(post_id: params[:post_id], text: params[:comment][:text])
-    # Fix: add action cable to handle adding comments
-    if @comment.save
-      redirect_to request.referrer, notice: "Comment posted"
-    else
-      redirect_to request.referrer, alert: "Your comment was not posted"
-    end
+
+    @comment.save
+    ActionCable.server.broadcast "comments_channel",
+                                  comment: @comment,
+                                  user: current_user,
+                                  post: @comment.post
   end
-  
+
   def destroy
     Comment.find(params[:id]).destroy
   end

@@ -33,12 +33,7 @@ class ReactionsController < ApplicationController
     reaction.user = current_user
     reaction.like = like
     reaction.dislike = !like
-    
-    if reaction.save
-      flash[:notice] = 'reaction saved'
-    else
-      flash[:alert] = 'sorry your reaction was denied, try again.'
-    end
+    reaction.save
   end
 
   def update(reaction, like)

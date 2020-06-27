@@ -151,7 +151,7 @@
           <p class="note">There is no posts, availble here.</p>
         <% end %>
         <% @posts.each do |post| %>
-          <div class="box">
+          <div id="post-<%= post.id %>" class="box">
             <div class="poster-identifier">
               <div class="poster-info">
                 <%= link_to user_path(@user) do %>
@@ -213,7 +213,12 @@
                 </div>
               <% end %>
               <div class="comments">
-                <%= pluralize(post.comments.length, 'Comment') %>
+                <span><%= post.comments.length %></span> 
+                <% if post.comments.length == 1  %>
+                  Comment
+                <% else %>
+                  Comments
+                <% end %>
               </div>
             </div>
 
