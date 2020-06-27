@@ -17,7 +17,7 @@ consumer.subscriptions.create("CommentsChannel", {
     if (post) {
       const comments_container = post.querySelector('.comments-container');
       const form = post.querySelector('.comment-form');
-      const input = form.querySelector('textarea');
+      const input = form.querySelector('#comment_text');
       const button = form.querySelector('.btn.is-success');
       const comments_counter = post.querySelector('.comments span');
 
