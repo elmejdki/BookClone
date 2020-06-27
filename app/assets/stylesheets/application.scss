@@ -1525,6 +1525,10 @@ body {
     }
   }
 
+  .sign-up-image {
+    height: fit-content;
+  }
+
   .columns:not(.is-desktop) {
     .columns {
       -webkit-box-orient: vertical;
