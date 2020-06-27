@@ -98,40 +98,12 @@
 
             <div class="comments-container">
               <% post.comments.each do |comment| %>
-                <div class="comment">
-                  <div class="user-avatar">
-                    <%= link_to user_path(comment.user) do %>
-                      <%= render partial: 'user_image', locals: { user: comment.user } %>
-                    <% end %>
-                  </div>
-                  <div class="comment-body">
-                    <div class="flex">
-                      <%# FIX: this should be changed to a link that get the user page %>
-                      <span class='user-name'><%= comment.user.username %></span>
-                      <%= comment.text %>
-                    </div>
-                  </div>
-                </div>
-                <div class="comment-action">
-                  <% if comment.user == current_user %>
-                    <%= link_to  '<i class="fa fa-trash"></i>'.html_safe, post_comment_path(post ,comment), method: :delete %>
-                  <% end %>
-                  <span class="comment-date"><%= time_ago_in_words(comment.created_at) %>, ago</span>
-                </div>
-
+                <%= render partial: 'comments/comment', locals: { post: post, comment: comment } %>
               <% end %>
             </div>
 
             <% if user_signed_in? %>
-              <div class="comment-form">
-                <div class="comment-avatar">
-                  <%= render partial: 'user_image', locals: { user: current_user } %>
-                </div>
-                <%= simple_form_for current_user.comments.new, url: post_comments_path(post) do |f| %>
-                  <%= f.text_area :text, placeholder: 'what\'s in your mind?', class: "textarea"%>
-                  <%= f.button :submit, 'Comment', class: 'button is-success is-small' %>
-                <% end %>
-              </div>
+              <%= render partial: 'comments/form', locals: { post: post } %>
             <% end %>
           </div>
         <% end %>

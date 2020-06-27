@@ -10,12 +10,7 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    # Fix: add action cable to handle adding comments
-    if Comment.find(params[:id]).destroy
-      redirect_to request.referrer, notice: "Comment deleted"
-    else
-      redirect_to request.referrer, alert: "Your comment was not posted"
-    end
+    Comment.find(params[:id]).destroy
   end
 
   private
