@@ -5,7 +5,6 @@ class ReactionsController < ApplicationController
     unless reaction.nil?
       if reaction.like
         reaction.destroy
-        redirect_to request.referrer
       else  
         update(reaction, true)
       end
@@ -20,7 +19,6 @@ class ReactionsController < ApplicationController
     unless reaction.nil?
       if reaction.dislike
         reaction.destroy
-        redirect_to request.referrer
       else  
         update(reaction, false)
       end
@@ -37,9 +35,9 @@ class ReactionsController < ApplicationController
     reaction.dislike = !like
     
     if reaction.save
-      redirect_to request.referrer
+      flash[:notice] = 'reaction saved'
     else
-      redirect_to request.referrer, alert: 'sorry your reaction was denied, try again.'
+      flash[:alert] = 'sorry your reaction was denied, try again.'
     end
   end
 
@@ -48,6 +46,5 @@ class ReactionsController < ApplicationController
     reaction.dislike = !like
 
     reaction.save
-    redirect_to request.referrer
   end
 end

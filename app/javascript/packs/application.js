@@ -139,6 +139,43 @@ document.addEventListener('turbolinks:load', () => {
     }
   })
 
+  const reaction_containers = document.querySelectorAll('.reaction-container');
+  if (reaction_containers) {
+    Array.prototype.slice.call(reaction_containers).forEach((container) => {
+      const reaction_buttons = container.querySelectorAll('.likes, .dislikes');
+      const like_items = reaction_buttons[0].querySelectorAll('span, i');
+      const dislike_items = reaction_buttons[1].querySelectorAll('span, i');
+
+      const react = (like_items, dislike_items) => {
+        if ( like_items[0].classList.contains('has-text-base') ) {
+          like_items[0].classList.remove('has-text-base');
+          like_items[1].classList.remove('has-text-base');
+          like_items[0].innerText = Number(like_items[0].innerText) - 1;
+        }else {
+          like_items[0].classList.add('has-text-base');
+          like_items[1].classList.add('has-text-base');
+          like_items[0].innerText = Number(like_items[0].innerText) + 1;
+          
+          if (dislike_items[0].classList.contains('has-text-base')) {
+            dislike_items[0].classList.remove('has-text-base');
+            dislike_items[1].classList.remove('has-text-base');
+            dislike_items[0].innerText = Number(dislike_items[0].innerText) - 1;
+          }
+        }
+      }
+
+      container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('fas') && e.target.parentNode.parentNode.classList.contains('likes')) {
+          react(like_items, dislike_items);
+        }
+        
+        if (e.target.classList.contains('fas') && e.target.parentNode.parentNode.classList.contains('dislikes')) {
+          react(dislike_items, like_items);
+        }
+      });
+    })
+  }
+
   window.addEventListener('resize', () => {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);

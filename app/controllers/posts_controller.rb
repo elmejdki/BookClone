@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to request.referrer, notice: 'post created successfully'
     else
-      redirect_to request.referrer, alert: 'post was not created, for some raison'
+      redirect_to request.referrer, alert: 'post was not created, for some reason'
     end
   end
 
