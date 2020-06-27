@@ -21,7 +21,7 @@ consumer.subscriptions.create("CommentsChannel", {
       const button = form.querySelector('.btn.is-success');
       const comments_counter = post.querySelector('.comments span');
 
-      comments_counter.innerText = Number(comments_counter.innerText) + 1;
+      comments_counter.innerText = data.n_comments;
  
       button.disabled = false;
       input.value = '';

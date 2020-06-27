@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
     ActionCable.server.broadcast "comments_channel",
                                   comment: @comment,
                                   user: current_user,
-                                  post: @comment.post
+                                  post: @comment.post,
+                                  n_comments: @comment.post.comments.length
   end
 
   def destroy
