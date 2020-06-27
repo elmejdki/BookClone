@@ -1,6 +1,6 @@
 # BookClone
 
-> This project was born as a result of 2 week of dedication of hard work, between me [@Zakariae](https://www.linkedin.com/in/zakariaeelmejdki/), and my partner [@Franco](https://www.linkedin.com/in/franco-rosa-79972119b/), after finishing Rails curriculum on Microverse we decided to build a Facebook replicate in order to understand more the structure of Ruby on Rails, but we where serious about building something beautiful like this feel free guys to explore the [app](https://book-clone.herokuapp.com/) and please if you have some new feature that you want to propose don't hesitate to open an issue on this repository with the specified details.
+> This project was born as a result of 2 week of dedicated hard work, between me [@Zakariae](https://www.linkedin.com/in/zakariaeelmejdki/), and my partner [@Franco](https://www.linkedin.com/in/franco-rosa-79972119b/), after finishing Rails curriculum on Microverse we decided to build a Facebook replicate in order to understand more the structure of Ruby on Rails, but we where serious about building something beautiful like this feel free guys to explore the [app](https://book-clone.herokuapp.com/) and please if you have some new feature that you want to propose don't hesitate to open an issue on this repository with the specified details.
 
 ## Home Page
 
