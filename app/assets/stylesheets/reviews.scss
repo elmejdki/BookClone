@@ -838,19 +838,16 @@
      position: relative;
      padding: 0 3px;
      font-size: 30px;
+     font-family: "Font Awesome 5 Free";  
+     content: '\f005';
+     display: block;
      
      &:before {
-       font-family: "fontAwesome";
-       content: '\f005';
-       display: block;
        color: lightgrey;
        text-shadow: 0 1px rgba(0,0,0,0.5) ;
      }
      
      &:after {
-       font-family: "fontAwesome";
-       content: '\f005';
-       display: block;
        position: absolute;
        top: 0;
        z-index: 1;
