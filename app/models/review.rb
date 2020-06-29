@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
   belongs_to :user
-  validates :text, presence: true, length: { minimun: 1 }
+  validates :text, presence: true, length: { minimum: 1 }
 end
