@@ -680,7 +680,7 @@ body {
   }
 
   .timeline-container {
-    padding: 0 20px;
+    padding: 0 5px 0 20px;
 
     .posts-container {
 
@@ -873,6 +873,7 @@ body {
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
+            overflow-wrap: anywhere;
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
@@ -1250,6 +1251,7 @@ body {
         .message {
           width: -webkit-fit-content;
           width: -moz-fit-content;
+          overflow-wrap: anywhere;
           width: fit-content;
           margin: 5px;
           background-color: $clear-grey;
@@ -1422,14 +1424,14 @@ body {
 
     .column-style {
       margin-right: 0;
-      width: -webkit-fill-available;
+      width: 100%;
     }
 
     .column.is-three-fifths {
       -webkit-box-flex: 0;
           -ms-flex: none;
               flex: none;
-      width: fit-content;
+      width: 100%;
     }
 
     .column.is-one-fifth {
