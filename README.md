@@ -92,6 +92,14 @@ Start server with:
 
 Then open `http://localhost:3000/` in your browser
 
+# Future Features
+
+- Make the search field working so we can allow users to search for each other
+- Add pagination to the list of posts and friends also 
+- Add, birthday to user model, to cheer if someone birthday comes soon or whatever
+- Add some javascript validation for the signup page
+- Show a notification if someone liked my post or commented on it.
+
 ## Authors
 
 👤 **Zakariae El Mejdki**
