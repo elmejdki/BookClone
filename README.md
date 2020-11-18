@@ -1,6 +1,6 @@
 # BookClone
 
-> This project was born as a result of 2 week of dedicated hard work, between me [@Zakariae](https://www.linkedin.com/in/zakariaeelmejdki/), and my partner [@Franco](https://www.linkedin.com/in/franco-rosa-79972119b/), after finishing Rails curriculum on Microverse we decided to build a Facebook replicate in order to understand more the structure of Ruby on Rails, but we where serious about building something beautiful like this feel free guys to explore the [app](https://book-clone.herokuapp.com/) and please if you have some new feature that you want to propose don't hesitate to open an issue on this repository with the specified details.
+> This project was born as a result of 2 weeks of dedicated hard work, between me [@Zakariae](https://www.linkedin.com/in/zakariaeelmejdki/), and my partner [@Franco](https://www.linkedin.com/in/franco-rosa-79972119b/), after finishing the Rails curriculum on Microverse we decided to build a Facebook replicate in order to understand more the structure of Ruby on Rails, but we were serious about building something beautiful like this, please feel free guys exploring the [app](https://book-clone.herokuapp.com/) and if you have some new feature that you want to propose don't hesitate to open an issue on this repository with the specified details.
 
 ## Home Page
 
@@ -17,7 +17,7 @@
 
 ## Features
 - User can log in using an email and password;
-- User can sign up, entering his personal informations;
+- User can sign up, entering his personal information;
 - User can access his profile;
 - User can access all users profile;
 - User can add a friend;
@@ -25,11 +25,11 @@
 - User can accept or decline a friend request;
 - User can share a post, delete and edit his own posts;
 - User can like, dislike and leave a comment on a post;
-- User can sent messages to a user;
+- User can send messages to other users;
 - User can receive messages from a user;
 - User can change his avatar;
 - User can change his cover picture;
-- User can update his personal informations;
+- User can update his personal information;
 
 ## Built With
 
@@ -73,9 +73,9 @@ To get a local copy up and running follow these simple example steps.
 
 ## IMPORTANT
 
-**I used S3 AWS service in order to store images. Therefore, I used SECRET KEYS stored in environment variables on my development and production servers.**
+**I used the S3 AWS service in order to store images. Therefore, I used SECRET KEYS stored in environment variables on my development and production servers.**
 
-- So if you have AWS credentials create a file an application.yml file inside config/ and put this your credentials in it like showing bellow:
+- So if you have AWS credentials create a new file named `application.yml` inside `config/` directory and then past your credentials in it like showing bellow:
 
 ```ruby
   development:
@@ -95,10 +95,14 @@ Then open `http://localhost:3000/` in your browser
 # Future Features
 
 - Make the search field working so we can allow users to search for each other
-- Add pagination to the list of posts and friends also 
-- Add, birthday to user model, to cheer if someone birthday comes soon or whatever
-- Add some javascript validation for the signup page
-- Show a notification if someone liked my post or commented on it.
+
+  Add pagination to the list of posts and friends also 
+
+  Add, birthday to the user model, to cheer if someone birthday comes soon or whatever
+
+  Add some javascript validation for the signup page
+
+  Show a notification if someone liked my post or commented on it.
 
 ## Authors
 
