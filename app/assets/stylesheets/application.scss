@@ -738,7 +738,6 @@ body {
       .post-image {
         img {
           width: 100%;
-          height: 400px;
           -o-object-fit: cover;
              object-fit: cover;
         }
@@ -1554,18 +1553,6 @@ body {
         left: 30px;
       }
     }
-
-    .timeline-container {
-      .posts-container {
-        .box {
-          .post-image {
-            img {
-              height: 415px;
-            }
-          }
-        }
-      }
-    }
   }
  
   header {
@@ -1771,17 +1758,6 @@ body {
 
           .friend-status {
             bottom: -65px;
-          }
-        }
-      }
-    }
-    .timeline-container {
-      .posts-container {
-        .box {
-          .post-image {
-            img {
-              height: 215px;
-            }
           }
         }
       }
