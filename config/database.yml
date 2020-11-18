@@ -12,6 +12,8 @@ default: &default
 development:
   <<: *default
   database: db/development_bookclone
+  username: postgres
+  password: postgres
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,6 +21,8 @@ development:
 test:
   <<: *default
   database: db/test_bookclone
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgesql
