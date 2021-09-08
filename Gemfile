@@ -11,7 +11,7 @@ gem 'puma', '~> 4.1'
 # use devise for authentication
 gem 'devise'
 gem 'bulma-rails', '~> 0.8.2'
-gem 'better_errors', '~> 2.7', '>= 2.7.1'
+gem 'better_errors', '~> 2.8'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'image_processing'
 gem "aws-sdk-s3"
